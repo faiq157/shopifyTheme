@@ -7,7 +7,7 @@
   position: relative;
   display: flex;
   align-items: center;
-  justify-content: center;
+  /* justify-content: center; */
   overflow: hidden;
   margin: 0 !important;
   padding: 0 !important;
@@ -113,7 +113,8 @@
   position: relative;
   z-index: 3;
   width: 100%;
-  max-width: 1400px;
+  height: 677px;
+  max-width: 1400.15px;
   margin: 0 auto;
   padding: 0 2rem;
   padding-top: 80px; /* Account for transparent header height */
@@ -939,6 +940,7 @@ box-shadow: 0 0 20px rgba(255, 98, 0, 0.3);
   background: hsla(0, 0%, 0%, 1);
   padding: 1rem 0;
   position: relative;
+  top: -10px;
   background: linear-gradient(
     to top,
     rgba(0, 0, 0, 0.9) 0%,   /* deep black at bottom */

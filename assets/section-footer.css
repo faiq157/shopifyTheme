@@ -12,24 +12,26 @@
 
 /* Newsletter Section */
 .footer__newsletter-section {
-  background: url('footerimage.png');
+  background: url('zanzeer.PNG');
   background-position: center;
+  background-size: cover;
   background-repeat: no-repeat;
   padding: 0 0 2rem 0;
   position: relative;
   height: 147px;
   display: flex;
   align-items: center;
+  width: 100%;
 }
 
 .footer__newsletter-section::before {
   content: '';
   position: absolute;
-  top: 10;
+  top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(0, 0, 0, 0.4);
   z-index: 1;
 }
 
