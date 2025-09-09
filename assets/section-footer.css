@@ -1,0 +1,356 @@
+/* Footer Styles - Johnny Dang & Co Design */
+
+.footer {
+  background: #000000;
+  color: #ffffff;
+  position: relative;
+}
+
+/* Newsletter Section */
+.footer__newsletter-section {
+  background: url('footerimage.png') center/cover;
+  padding: 0 0 2rem 0;
+  position: relative;
+  height: 147px;
+  display: flex;
+  align-items: center;
+}
+
+.footer__newsletter-section::before {
+  content: '';
+  position: absolute;
+  top: 10;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 1;
+}
+
+.footer__newsletter-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  position: relative;
+  z-index: 2;
+}
+
+.footer__newsletter-text {
+  flex: 1;
+}
+
+.footer__newsletter-heading {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #ffffff;
+  margin: 0 0 1rem 0;
+}
+
+.footer__newsletter-description {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  color: #ffffff;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.footer__newsletter-form {
+  flex: 0 0 auto;
+}
+
+.footer__newsletter-input-group {
+  display: flex;
+  gap: 10px;
+  max-width: 500px;
+}
+
+.footer__newsletter-input {
+  flex: 1;
+  border: none;
+  border-radius: 6px;
+  width: 264px;
+  outline: none;
+  background: #ffffff;
+}
+.footer__newsletter-input:focus {
+  background: #ffffff;         /* keep white */
+  border: none;   /* keep same border */
+  outline: none;  
+}
+
+.footer__newsletter-input::placeholder {
+  color: black;
+ 
+}
+
+.footer__newsletter-input::placeholder:focus {
+  color: white;
+ 
+}
+
+.footer__newsletter-button {
+  padding: 1rem 2rem;
+  background: #00000087;
+  color: #FF6200;
+  border: 2px solid #ff6b35;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  border-radius: 8px;
+  padding: 10px 20px;
+}
+
+.footer__newsletter-button:hover {
+  background: #ff6b35;
+  color: #ffffff;
+}
+
+/* Main Footer Content */
+.footer__main-content {
+  background: #000000;
+  background-image: 
+    linear-gradient(rgba(186, 95, 36, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(186, 95, 36, 0.1) 1px, transparent 1px);
+  background-size: 100px 100px;
+  background-position: 0 0;
+  height: 380px;
+}
+
+.footer__grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 3rem;
+  position: relative;
+  padding-top: 6rem;
+}
+
+.footer__column {
+  position: relative;
+}
+
+/* Company Column */
+.footer__logo {
+  margin-bottom: 1.5rem;
+}
+
+.footer__logo-image {
+  max-width: 200px;
+  height: auto;
+  display: block;
+}
+
+.footer__company-description {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #ffffff;
+  margin: 0;
+}
+
+/* Column Headings */
+.footer__column-heading {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #ff6b35;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 0 0 1.5rem 0;
+}
+
+/* Links */
+.footer__links-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 16px;
+}
+
+.footer__links-list li {
+  margin-bottom: 0.8rem;
+  font-size: 16px;
+}
+
+.footer__link {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  color: #ffffff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer__link:hover {
+  color: #ff6b35;
+}
+
+/* Customer Care */
+.footer__care-info p {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  color: #ffffff;
+  margin: 0 0 0.8rem 0;
+  line-height: 1.4;
+}
+
+.footer__hours {
+  font-weight: 500;
+}
+
+.footer__contact {
+  color: #ff6b35;
+  font-weight: 500;
+}
+
+/* Bottom Section */
+.footer__bottom {
+  background: #000000;
+  background-image: 
+    linear-gradient(rgba(186, 95, 36, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(186, 95, 36, 0.1) 1px, transparent 1px);
+  background-size: 100px 100px;
+  background-position: 0 0;
+  
+}
+
+.footer__bottom-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.footer__social-heading {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-left: 20px;
+}
+
+.footer__social-icons {
+  display: flex;
+  gap: 1rem;
+  padding-bottom: 5rem;
+}
+
+.footer__social-icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+
+  color: #ff6b35;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.footer__social-icon:hover {
+  background: #ff6b35;
+  color: #000000;
+  transform: translateY(-2px);
+}
+
+.footer__social-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.footer__copyright {
+  text-align: right;
+}
+
+.footer__copyright p {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  color: #ffffff;
+  margin: 0;
+}
+
+/* Mobile Responsive */
+@media screen and (max-width: 1024px) {
+  .footer__grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .footer__newsletter-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 2rem;
+  }
+  
+  .footer__newsletter-heading {
+    font-size: 2rem;
+  }
+  
+  .footer__newsletter-input-group {
+    flex-direction: column;
+    max-width: 100%;
+  }
+  
+  .footer__newsletter-button {
+    border-radius: 0;
+  }
+  
+  .footer__grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .footer__bottom-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 1.5rem;
+  }
+  
+  .footer__copyright {
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .footer__newsletter-section {
+    padding: 1rem 0;
+  }
+  
+  .footer__newsletter-heading {
+    font-size: 1.5rem;
+  }
+  
+  .footer__main-content {
+    padding: 1rem 0;
+  }
+  
+  .footer__logo-icon {
+    font-size: 2.5rem;
+  }
+  
+  .footer__social-icons {
+    gap: 0.8rem;
+  }
+  
+  .footer__social-icon {
+    width: 35px;
+    height: 35px;
+  }
+  
+  .footer__social-icon svg {
+    width: 18px;
+    height: 18px;
+  }
+}

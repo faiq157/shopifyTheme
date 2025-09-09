@@ -1,0 +1,951 @@
+/* ========================================
+   JOHNNY DANG OPTIMIZED HERO CAROUSEL
+   ======================================== */
+
+.jd-hero {
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  margin: 0 !important;
+  padding: 0 !important;
+  transition: background 1.5s ease-in-out;
+}
+
+.jd-hero::before {
+  content: '';
+  position: absolute;
+  top: 80px;
+  right: 0;
+  width: 30%;
+  height: calc(100% - 80px);
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.02) 2px, transparent 2px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 2px, transparent 2px);
+  background-size: 80px 80px;
+  background-position: -2px -2px, -2px -2px;
+  background-repeat: repeat;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.jd-hero::after {
+  content: '';
+  position: absolute;
+  top: 80px;
+  left: 0;
+  width: 100%;
+  height: calc(100% - 80px);
+  background: 
+    radial-gradient(ellipse 50% 40% at 15% 25%, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.08) 40%, transparent 70%),
+    radial-gradient(ellipse 50% 40% at 15% 75%, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.08) 40%, transparent 70%),
+    radial-gradient(ellipse 60% 50% at 85% 50%, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.04) 30%, transparent 60%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Default background with animation */
+.jd-hero {
+  background: linear-gradient(106.46deg, #FFFFFF -7.59%, #FF6200 -7.59%, rgba(0, 0, 0, 0.99) 87.22%),
+              linear-gradient(108.2deg, rgba(0, 0, 0, 0) -29.77%, rgba(0, 0, 0, 0.41) 170.9%);
+  background-size: 400% 400%;
+  animation: gradientShift 8s ease-in-out infinite;
+}
+
+/* Background variations for different slides with smooth animations */
+.jd-hero[data-slide="0"] {
+  background: linear-gradient(106.46deg, #FFFFFF -7.59%, #FF6200 -7.59%, rgba(0, 0, 0, 0.99) 87.22%),
+              linear-gradient(108.2deg, rgba(0, 0, 0, 0) -29.77%, rgba(0, 0, 0, 0.41) 170.9%);
+  background-size: 400% 400%;
+  animation: gradientShift 8s ease-in-out infinite;
+}
+
+.jd-hero[data-slide="1"] {
+  background: linear-gradient(106.46deg, #FFFFFF -7.59%, #A51AE6 -7.59%, rgba(0, 0, 0, 0.99) 87.22%),
+              linear-gradient(108.2deg, rgba(0, 0, 0, 0) -29.77%, rgba(0, 0, 0, 0.41) 170.9%);
+  background-size: 400% 400%;
+  animation: gradientPulse 10s ease-in-out infinite;
+}
+
+.jd-hero[data-slide="2"] {
+  background: linear-gradient(106.46deg, #FFFFFF -7.59%, rgba(255, 98, 0, 0.33) -7.59%, rgba(153, 17, 216, 0.52) 39.3%, rgba(0, 0, 0, 0.58) 87.22%),
+              linear-gradient(108.2deg, rgba(0, 0, 0, 0) -29.77%, rgba(0, 0, 0, 0.41) 170.9%);
+  background-size: 400% 400%;
+  animation: gradientFlow 12s ease-in-out infinite;
+}
+
+.jd-hero[data-slide="3"] {
+  background: linear-gradient(106.46deg, #FFFFFF -7.59%, rgba(255, 98, 0, 0.8) -7.59%, rgba(165, 26, 230, 0.32) 87.22%),
+              linear-gradient(108.2deg, rgba(0, 0, 0, 0) -29.77%, rgba(0, 0, 0, 0.41) 170.9%);
+  background-size: 400% 400%;
+  animation: gradientWave 9s ease-in-out infinite;
+}
+
+.jd-hero[data-slide="4"] {
+  background: linear-gradient(105.72deg, #000000 -2.8%, #000000 -0.97%, #B64F0E 62.7%, rgba(255, 112, 22, 0.67) 93.9%),
+              linear-gradient(108.2deg, rgba(0, 0, 0, 0) -29.77%, rgba(0, 0, 0, 0.41) 170.9%);
+  background-size: 400% 400%;
+  animation: gradientSpiral 11s ease-in-out infinite;
+}
+
+.jd-hero__container {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  padding-top: 80px; /* Account for transparent header height */
+}
+
+/* Remove any section-level margins and position at top */
+.shopify-section[id*="jd-hero"], 
+.shopify-section .jd-hero,
+section.jd-hero,
+.shopify-section[id*="hero"],
+.shopify-section[id*="carousel"],
+.shopify-section[id*="banner"] {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+  position: relative;
+  top: 0;
+}
+
+/* Also remove any global section spacing for hero sections */
+.shopify-section--hero,
+.shopify-section--banner,
+.shopify-section--carousel {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+  position: relative;
+  top: 0;
+}
+
+/* Ensure the first section (hero) starts at the very top */
+.shopify-section:first-child,
+.main-content > .shopify-section:first-child {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+/* Remove any body/html margins that could cause dark background */
+html, body {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Ensure main content starts at top */
+.main-content, main, #MainContent {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+.jd-hero__slide {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 2rem;
+  align-items: center;
+  min-height: 80vh;
+  opacity: 0;
+  transform: translateX(50px);
+  transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 2rem 0;
+  pointer-events: none;
+}
+
+.jd-hero__slide.active {
+  opacity: 1;
+  transform: translateX(0);
+  position: relative;
+  z-index: 5;
+  pointer-events: auto;
+}
+
+.jd-hero__slide.prev {
+  transform: translateX(-50px);
+}
+
+.jd-hero__content {
+  text-align: left;
+  position: relative;
+  z-index: 10;
+  pointer-events: auto;
+  
+}
+
+.jd-hero__subtitle {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.4rem;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+
+  font-family: sans-serif;
+}
+
+.jd-hero__title {
+  color: #ffffff;
+  font-size: clamp(4.5rem, 8vw, 8rem);
+  font-weight: 700;
+  line-height: 1.0;
+
+  font-family: serif;
+}
+
+.jd-hero__title-line {
+  display: block;
+}
+
+
+.jd-hero__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: transparent;
+  color: #ffffff;
+  margin-top: 1rem;
+  padding: 1.4rem 3rem;
+  font-weight: 600;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  z-index: 10000;
+  pointer-events: auto;
+}
+
+
+
+.jd-hero__cta:hover {
+  background: #ffffff;
+  color: #000000;
+  transform: translateX(5px);
+}
+
+/* Ensure CTA button is always clickable */
+.jd-hero__cta,
+.jd-hero__cta * {
+  pointer-events: auto !important;
+  position: relative;
+  z-index: 10000 !important;
+}
+
+.jd-hero__cta:hover::after {
+  transform: translateX(5px);
+}
+
+.jd-hero__media {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+}
+
+.jd-hero__image {
+  width: 650px;
+  height: 650px;
+  object-fit: cover;
+  object-position: center;
+  filter: drop-shadow(0 40px 80px rgba(0, 0, 0, 0.5));
+  animation: float 6s ease-in-out infinite;
+  margin: 0 auto;
+  display: block;
+  position: relative;
+  z-index: 6;
+  border-radius: 10px;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.jd-hero__image:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 50px 100px rgba(0, 0, 0, 0.6)) brightness(1.1);
+}
+
+.jd-hero__controls {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.5rem;
+  z-index: 4;
+}
+
+.jd-hero__dot {
+  width: 40px;
+  height: 6px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  transition: all 0.4s ease;
+  border: none;
+  padding: 0;
+  position: relative;
+  margin: 0 4px;
+}
+
+.jd-hero__dot.active {
+  background: #ffffff;
+  width: 60px;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+}
+
+.jd-hero__dot:hover {
+  background: rgba(255, 255, 255, 0.6);
+  width: 50px;
+}
+
+/* Dot color previews based on slide backgrounds */
+.jd-hero__dot[data-slide="0"] {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.jd-hero__dot[data-slide="1"] {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.jd-hero__dot[data-slide="2"] {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.jd-hero__dot[data-slide="3"] {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.jd-hero__dot[data-slide="4"] {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.jd-hero__dot.active[data-slide="0"],
+.jd-hero__dot.active[data-slide="1"],
+.jd-hero__dot.active[data-slide="2"],
+.jd-hero__dot.active[data-slide="3"],
+.jd-hero__dot.active[data-slide="4"] {
+  background: #ffffff;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+}
+
+.jd-hero__video-preview {
+  position: absolute;
+  bottom: 3rem;
+  right: 3rem;
+  width: 280px;
+  height: 160px;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  margin: 1rem;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  z-index: 4;
+}
+
+.jd-hero__video-preview:hover {
+  transform: scale(1.05);
+}
+
+.jd-hero__video-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.jd-hero__video-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.jd-hero__video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+
+.jd-hero__play-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #000;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.jd-hero__play-btn:hover {
+  background: #ffffff;
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+
+/* Floating Animation */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+/* Smooth Gradient Animations */
+@keyframes gradientShift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes gradientPulse {
+  0%, 100% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+}
+
+@keyframes gradientFlow {
+  0% {
+    background-position: 0% 0%;
+  }
+  33% {
+    background-position: 100% 50%;
+  }
+  66% {
+    background-position: 0% 100%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}
+
+@keyframes gradientWave {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  25% {
+    background-position: 50% 0%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  75% {
+    background-position: 50% 100%;
+  }
+}
+
+@keyframes gradientSpiral {
+  0% {
+    background-position: 50% 50%;
+  }
+  25% {
+    background-position: 100% 0%;
+  }
+  50% {
+    background-position: 0% 50%;
+  }
+  75% {
+    background-position: 50% 100%;
+  }
+  100% {
+    background-position: 50% 50%;
+  }
+}
+
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+  .jd-hero__slide {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 2rem;
+    padding: 1rem 0;
+  }
+  
+  .jd-hero__container {
+    padding: 0 1rem;
+  }
+  
+  .jd-hero__title {
+    font-size: clamp(3rem, 12vw, 4.5rem);
+    margin-bottom: 2.5rem;
+  }
+  
+  .jd-hero__subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+  }
+
+  
+  .jd-hero__cta {
+    padding: 1.2rem 2.5rem;
+    font-size: 1rem;
+  }
+  
+  .jd-hero__image {
+    width: 450px;
+    height: 450px;
+    object-fit: contain;
+  }
+  
+  .jd-hero__media {
+    padding: 0.5rem;
+  }
+  
+  .jd-hero {
+    min-height: 90vh;
+  }
+
+  .jd-hero__video-preview {
+    width: 200px;
+    height: 120px;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    margin: 0.5rem;
+  }
+  
+}
+
+/* Tablet styles */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .jd-hero__slide {
+    gap: 2rem;
+  }
+  
+  .jd-hero__title {
+    font-size: clamp(4rem, 6vw, 6rem);
+  }
+  
+  .jd-hero__subtitle {
+    font-size: 1.3rem;
+  }
+  
+
+  
+  .jd-hero__cta {
+    padding: 1.3rem 2.8rem;
+    font-size: 1.1rem;
+  }
+  
+  .jd-hero__image {
+    width: 500px;
+    height: 500px;
+    object-fit: contain;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .jd-hero__slide {
+    transition: opacity 0.3s ease;
+  }
+  
+  .jd-hero__image {
+    animation: none;
+  }
+  
+  .jd-hero,
+  .jd-hero[data-slide="0"],
+  .jd-hero[data-slide="1"],
+  .jd-hero[data-slide="2"],
+  .jd-hero[data-slide="3"],
+  .jd-hero[data-slide="4"] {
+    animation: none;
+    transition: none;
+  }
+  
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Focus states */
+.jd-hero__dot:focus,
+.jd-hero__cta:focus {
+  outline: 2px solid rgba(255, 255, 255, 0.5);
+  outline-offset: 2px;
+}
+
+/* ========================================
+   CAROUSEL OVERLAY
+   ======================================== */
+
+.jd-hero__overlay {
+    width: 100%;
+    height: 80px;
+    background: rgba(0, 0, 0, 0.3); /* semi-transparent black */
+    filter: blur(8px);              /* blur effect */
+    position: relative;
+  }
+  
+
+/* ========================================
+   PROMOTION CARDS SECTION
+   ======================================== */
+
+.jd-promotion-cards {
+  padding: 2rem 0;
+  background: #000000;
+}
+
+.jd-promotion-cards__container {
+  max-width: full;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1%;
+  align-items: stretch;
+}
+
+.jd-promotion-card {
+  border-radius: 20px;
+  padding: 2rem;
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 252px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 976px;
+}
+
+.jd-promotion-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* Custom Jewelry Card */
+.jd-promotion-card--custom {
+  background: #121212;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  width: 976px;
+}
+
+.jd-promotion-card__image {
+  flex-shrink: 0;
+  margin-right: 1.5rem;
+}
+
+.jd-promotion-card__image-circle {
+  width: 20rem;
+  height: 20rem;
+  border-radius: 50%;
+  background: radial-gradient(54.02% 54.02% at 50% 50%, rgba(75, 0, 110, 0.63) 0%, rgba(0, 0, 0, 0.539) 100%);
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.jd-promotion-card__image-circle img {
+  width: 20rem;
+  height: 20rem;
+  border-radius: 50%;
+  object-fit: cover;
+  rotate: -30deg;
+}
+
+.jd-promotion-card__content {
+  flex: 1;
+  padding: 1rem;
+  margin-left: 1.5px;
+}
+
+.jd-promotion-card__subtitle {
+  font-size: 12px;
+  font-weight: 300;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.jd-promotion-card__title {
+  font-size:32px;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.2;
+  font-family: Georgia, 'Times New Roman', serif;
+}
+
+.jd-promotion-card__icon {
+  position: absolute;
+  top: 6rem;
+  right: 10rem;
+}
+
+.jd-promotion-card__icon-circle {
+  width: 60px;
+  height: 60px;
+  border: 2px dashed rgba(255, 255, 255, 0.6);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Celebrity Endorsements Card */
+.jd-promotion-card--celebrity {
+  background: linear-gradient(135deg, #4C1D95, #6B46C1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  flex-direction: column;
+  width: 392px;
+}
+
+.jd-promotion-card--celebrity::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("lines.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat; 
+  zoom: 2;
+  border-radius: 20px;
+  pointer-events: none;
+}
+
+.jd-promotion-card__header {
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.jd-promotion-card--celebrity .jd-promotion-card__title {
+  font-size: 22px;
+  font-weight: 600;
+  color: #ffffff;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; 
+  margin-left: 20px;
+}
+
+.jd-promotion-card__highlight {
+  background: #000000;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  margin-left: 0.25rem;
+}
+
+.jd-promotion-card__celebrities {
+  display: flex;
+  align-items: center;
+  gap: -10px;
+ margin-top: 30px;
+}
+
+.jd-promotion-card__celebrity {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-left: -30px;
+  position: relative;
+  z-index: 1;
+}
+
+.jd-promotion-card__celebrity:first-child {
+  margin-left: 0;
+  z-index: 3;
+}
+
+.jd-promotion-card__celebrity:nth-child(2) {
+  z-index: 2;
+}
+
+.jd-promotion-card__celebrity img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+  .jd-promotion-cards__container {
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 0 1rem;
+  }
+  
+  .jd-promotion-card--custom,
+  .jd-promotion-card--celebrity {
+    width: 100%;
+  }
+  
+  .jd-promotion-card {
+    padding: 1.5rem;
+    min-height: 180px;
+  }
+  
+  .jd-promotion-card--custom {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .jd-promotion-card__image {
+    margin-right: 0;
+    margin-bottom: 1rem;
+  }
+  
+  .jd-promotion-card__image-circle {
+    width: 120px;
+    height: 120px;
+  }
+  
+  .jd-promotion-card__image-circle img {
+    width: 90px;
+    height: 90px;
+  }
+  
+  .jd-promotion-card__title {
+    font-size: 1.25rem;
+  }
+  
+  .jd-promotion-card--celebrity .jd-promotion-card__title {
+    font-size: 1.125rem;
+  }
+  
+  .jd-promotion-card__celebrities {
+    justify-content: center;
+  }
+}
+
+/* ========================================
+   MARQUEE SECTION (Beneath Carousel)
+   ======================================== */
+
+.jd-marquee {
+  background: #000000;
+  color: #ffffff;
+  padding: 1rem 0;
+  position: relative;
+  overflow: hidden;
+  -webkit-backdrop-filter: blur(100px);
+  backdrop-filter: blur(100px);
+}
+
+/* Top blur overlay that softly blends into the carousel background */
+.jd-marquee::before {
+  content: '';
+  position: absolute;
+  top: -24px; /* pull over the carousel by ~24px */
+  left: 0;
+  right: 0;
+  height: 48px; /* blur band height */
+  pointer-events: none;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  
+  z-index: 1;
+}
+
+.jd-marquee__container {
+  max-width: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.jd-marquee__content {
+  display: flex;
+  animation: scroll-marquee 30s linear infinite;
+  gap: 3rem;
+  white-space: nowrap;
+  position: relative;
+  z-index: 2; /* above the blur overlay */
+}
+
+.jd-marquee__item {
+  flex-shrink: 0;
+}
+
+.jd-marquee__text {
+  color: #ffffff;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 3rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  transition: all 0.3s ease;
+}
+
+/* Scrolling animation */
+@keyframes scroll-marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Pause animation on hover */
+.jd-marquee:hover .jd-marquee__content {
+  animation-play-state: paused;
+}
+
+/* Mobile responsiveness */
+@media screen and (max-width: 768px) {
+  .jd-marquee {
+    padding: 0.75rem 0;
+  }
+  
+  .jd-marquee__text {
+    font-size: 2rem;
+  }
+  
+  .jd-marquee__content {
+    gap: 2rem;
+    animation-duration: 25s;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .jd-marquee__content {
+    animation: none;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+}

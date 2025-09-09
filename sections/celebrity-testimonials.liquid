@@ -1,0 +1,216 @@
+{{ 'celebrity-testimonials.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="celebrity-testimonials-section section-{{ section.id }}-padding">
+  <div class="page-width">
+    <div class="testimonials-header">
+      {% if section.settings.heading != blank %}
+        <h2 class="testimonials-heading">{{ section.settings.heading }}</h2>
+      {% endif %}
+      
+      {% if section.settings.cta_text != blank and section.settings.cta_link != blank %}
+        <a href="{{ section.settings.cta_link }}" class="testimonials-cta">
+          {{ section.settings.cta_text }}
+          <svg class="cta-arrow" width="12" height="12" viewBox="0 0 12 12" fill="none">
+            <path d="M6 2L6 10M6 2L2 6M6 2L10 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </a>
+      {% endif %}
+    </div>
+
+    <div class="testimonials-carousel">
+      <button class="carousel-btn carousel-btn-prev" aria-label="Previous testimonials">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+
+      <div class="testimonials-container">
+        <div class="testimonials-track">
+          {% for block in section.blocks %}
+            {% case block.type %}
+              {% when 'testimonial' %}
+                <div class="testimonial-item" {{ block.shopify_attributes }}>
+                  <div class="testimonial-image-wrapper {{ block.settings.frame_color }}">
+                    {% assign video_file = 'testo' | append: forloop.index | append: '.mp4' %}
+                    <video 
+                      class="testimonial-video"
+                      width="260"
+                      height="260"
+                      muted
+                      loop
+                      autoplay
+                      playsinline
+                    >
+                      <source src="{{ video_file | asset_url }}" type="video/mp4">
+                      Your browser does not support the video tag.
+                    </video>
+                  </div>
+                  
+                  <div class="testimonial-info">
+                    {% if block.settings.celebrity_name != blank %}
+                      <h3 class="celebrity-name">{{ block.settings.celebrity_name }}</h3>
+                    {% endif %}
+                    
+                    {% if block.settings.celebrity_title != blank %}
+                      <p class="celebrity-title">{{ block.settings.celebrity_title }}</p>
+                    {% endif %}
+                  </div>
+                </div>
+            {% endcase %}
+          {% endfor %}
+        </div>
+      </div>
+
+      <button class="carousel-btn carousel-btn-next" aria-label="Next testimonials">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Celebrity Testimonials",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "See Why the Stars Choose Johnny Dang & Co"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "Call to action text",
+      "default": "VIEW ALL TESTIMONIALS"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "Call to action link"
+    },
+    {
+      "type": "header",
+      "content": "Section padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Top padding",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom padding",
+      "default": 80
+    }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Celebrity Testimonial",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Celebrity Image"
+        },
+        {
+          "type": "text",
+          "id": "celebrity_name",
+          "label": "Celebrity Name",
+          "default": "CELEBRITY NAME"
+        },
+        {
+          "type": "text",
+          "id": "celebrity_title",
+          "label": "Celebrity Title",
+          "default": "OCCUPATION"
+        },
+        {
+          "type": "select",
+          "id": "frame_color",
+          "label": "Frame Color",
+          "options": [
+            {
+              "value": "orange-glow",
+              "label": "Orange Glow"
+            },
+            {
+              "value": "purple-glow",
+              "label": "Purple Glow"
+            }
+          ],
+          "default": "orange-glow"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Celebrity Testimonials",
+      "blocks": [
+        {
+          "type": "testimonial",
+          "settings": {
+            "celebrity_name": "DJ KHALED",
+            "celebrity_title": "MUSICIAN",
+            "frame_color": "orange-glow"
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "celebrity_name": "RYAN KANE",
+            "celebrity_title": "PRIVATE INVESTOR, ACTOR",
+            "frame_color": "purple-glow"
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "celebrity_name": "DRAKE GRAHAM",
+            "celebrity_title": "RAPPER & SINGER",
+            "frame_color": "orange-glow"
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "celebrity_name": "PAUL WALL",
+            "celebrity_title": "RAPPER & DJ",
+            "frame_color": "purple-glow"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

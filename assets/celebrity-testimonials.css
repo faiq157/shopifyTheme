@@ -1,0 +1,337 @@
+/* Celebrity Testimonials Section Styles */
+
+.celebrity-testimonials-section {
+  background: linear-gradient(180deg, 
+    #000000 0%, 
+    #1a0a0a 30%, 
+    #2d1b1b 60%, 
+    #4a2c2c 100%
+  );
+  position: relative;
+  overflow: hidden;
+  margin: 2rem auto;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.testimonials-header {
+  text-align: center;
+  margin: 4rem;
+  width: 100%;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.testimonials-heading {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 42px;
+  line-height: 48px;
+  letter-spacing: 2px;
+  color: #ffffff;
+  margin: 0 0 2rem 0;
+  text-transform: none;
+}
+
+.testimonials-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: #ff6b35;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.testimonials-cta:hover {
+  color: #ff8c5a;
+}
+
+.cta-arrow {
+  width: 16px;
+  height: 16px;
+  transform: rotate(45deg);
+  transition: transform 0.3s ease;
+}
+
+.testimonials-cta:hover .cta-arrow {
+  transform: rotate(45deg) translate(2px, -2px);
+}
+
+.testimonials-carousel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.carousel-btn {
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  padding: 1rem;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  z-index: 2;
+  flex-shrink: 0;
+}
+
+.carousel-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: scale(1.1);
+}
+
+.carousel-btn svg {
+  width: 24px;
+  height: 24px;
+}
+
+.testimonials-container {
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.testimonials-track {
+  display: flex;
+  gap: 2rem;
+  transition: transform 0.5s ease;
+  padding: 4rem 4rem 4rem 4rem;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.testimonial-item {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  min-width: 200px;
+}
+
+.testimonial-image-wrapper {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  /* Frame attributes */
+  border: 3px solid #FF6200;
+  border-width: 3px;
+  opacity: 1;
+  transform: rotate(0deg);
+  /* Circle gradient background */
+  background: radial-gradient(circle, rgba(255, 98, 0, 0.1) 0%, rgba(255, 98, 0, 0.05) 50%, transparent 100%);
+  /* Spacing between frame and video */
+  padding: 15px;
+}
+
+.testimonial-image-wrapper.orange-glow {
+  box-shadow: 
+    0 0 15px rgba(255, 107, 53, 0.4),
+    0 0 30px rgba(255, 107, 53, 0.3),
+    0 0 45px rgba(255, 107, 53, 0.2),
+    0 0 60px rgba(255, 107, 53, 0.1);
+  border: 3px solid #FF6200;
+  background: radial-gradient(circle, rgba(255, 98, 0, 0.15) 0%, rgba(255, 98, 0, 0.08) 50%, transparent 100%);
+}
+
+.testimonial-image-wrapper.purple-glow {
+  box-shadow: 
+    0 0 15px rgba(183, 45, 247, 0.4),
+    0 0 30px rgba(183, 45, 247, 0.3),
+    0 0 45px rgba(183, 45, 247, 0.2),
+    0 0 60px rgba(183, 45, 247, 0.1);
+  border: 3px solid #FF6200;
+  background: radial-gradient(circle, rgba(183, 45, 247, 0.15) 0%, rgba(183, 45, 247, 0.08) 50%, transparent 100%);
+}
+
+
+
+
+
+
+.testimonial-video {
+  width: 170px;
+  height: 170px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.testimonial-placeholder {
+  width: 100%;
+  height: 100%;
+  background: #f0f0f0;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.testimonial-info {
+  text-align: center;
+}
+
+.celebrity-name {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 22px;
+  letter-spacing: 1px;
+  color: #ffffff;
+  margin: 0 0 0.5rem 0;
+  text-transform: uppercase;
+}
+
+.celebrity-title {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: 0.5px;
+  color: #ff6b35;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+/* Mobile Responsive */
+@media screen and (max-width: 749px) {
+  .testimonials-heading {
+    font-size: 28px;
+    line-height: 32px;
+    letter-spacing: 1px;
+  }
+  
+  .testimonials-cta {
+    font-size: 14px;
+    letter-spacing: 1px;
+  }
+  
+  .testimonials-carousel {
+    gap: 1rem;
+    max-width: 100%;
+    padding: 0 1rem;
+  }
+  
+  .carousel-btn {
+    padding: 0.5rem;
+  }
+  
+  .carousel-btn svg {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .testimonials-track {
+    gap: 1.5rem;
+  }
+  
+  .testimonial-item {
+    min-width: 150px;
+  }
+  
+  .testimonial-image-wrapper {
+    width: 150px;
+    height: 150px;
+  }
+  
+  .celebrity-name {
+    font-size: 16px;
+    line-height: 20px;
+  }
+  
+  .celebrity-title {
+    font-size: 12px;
+    line-height: 16px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .testimonials-heading {
+    font-size: 24px;
+    line-height: 28px;
+  }
+  
+  .testimonial-item {
+    min-width: 120px;
+  }
+  
+  .testimonial-image-wrapper {
+    width: 120px;
+    height: 120px;
+  }
+  
+  .celebrity-name {
+    font-size: 14px;
+    line-height: 18px;
+  }
+  
+  .celebrity-title {
+    font-size: 11px;
+    line-height: 14px;
+  }
+}
+
+/* Animation for glowing frames */
+.testimonial-image-wrapper.orange-glow {
+  animation: orangeGlow 3s ease-in-out infinite alternate;
+}
+
+.testimonial-image-wrapper.purple-glow {
+  animation: purpleGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes orangeGlow {
+  0% {
+    box-shadow: 
+      0 0 12px rgba(255, 107, 53, 0.3),
+      0 0 25px rgba(255, 107, 53, 0.25),
+      0 0 40px rgba(255, 107, 53, 0.15),
+      0 0 55px rgba(255, 107, 53, 0.08);
+  }
+  100% {
+    box-shadow: 
+      0 0 18px rgba(255, 107, 53, 0.5),
+      0 0 35px rgba(255, 107, 53, 0.35),
+      0 0 50px rgba(255, 107, 53, 0.25),
+      0 0 65px rgba(255, 107, 53, 0.12);
+  }
+}
+
+@keyframes purpleGlow {
+  0% {
+    box-shadow: 
+      0 0 12px rgba(183, 45, 247, 0.3),
+      0 0 25px rgba(183, 45, 247, 0.25),
+      0 0 40px rgba(183, 45, 247, 0.15),
+      0 0 55px rgba(183, 45, 247, 0.08);
+  }
+  100% {
+    box-shadow: 
+      0 0 18px rgba(183, 45, 247, 0.5),
+      0 0 35px rgba(183, 45, 247, 0.35),
+      0 0 50px rgba(183, 45, 247, 0.25),
+      0 0 65px rgba(183, 45, 247, 0.12);
+  }
+}
