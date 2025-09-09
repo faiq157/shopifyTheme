@@ -12,6 +12,7 @@
       
       this.slides = this.carousel.querySelectorAll('.jd-hero__slide');
       this.dots = this.carousel.querySelectorAll('.jd-hero__dot');
+      this.video = document.querySelector('.jd-hero__video');
       
       this.currentSlide = 0;
       this.isAutoPlaying = true;
@@ -24,6 +25,7 @@
       this.showSlide(0);
       this.bindEvents();
       this.startAutoPlay();
+      this.ensureVideoAutoplay();
     }
     
     bindEvents() {
@@ -57,6 +59,11 @@
       
       // Touch/swipe support
       this.addSwipeSupport();
+
+      // Fallback: start video on first interaction if blocked
+      ['click','touchstart','keydown'].forEach(evt => {
+        window.addEventListener(evt, () => this.ensureVideoAutoplay(), { once: true });
+      });
     }
     
     addSwipeSupport() {
@@ -145,6 +152,21 @@
         this.autoPlayInterval = null;
       }
     }
+
+    ensureVideoAutoplay() {
+      if (!this.video) return;
+      try {
+        const playPromise = this.video.play();
+        if (playPromise && typeof playPromise.then === 'function') {
+          playPromise.catch(() => {
+            this.video.muted = true;
+            this.video.play().catch(() => {});
+          });
+        }
+      } catch (e) {
+        /* ignore */
+      }
+    }
   }
 </script>
 
@@ -184,10 +206,9 @@
               {% if block.settings.image != blank %}
                 <img 
                   class="jd-hero__image"
-                  src="{{ block.settings.image | image_url: width: 800 }}"
+                  src="{{ block.settings.image | image_url: width: 400 }}"
                   alt="{{ block.settings.image.alt | default: block.settings.title }}"
-                  width="800"
-                  height="800"
+                  
                   loading="{% if forloop.first %}eager{% else %}lazy{% endif %}"
                 >
               {% else %}
@@ -278,12 +299,11 @@
       <div class="jd-hero__video-placeholder">
         <video 
           class="jd-hero__video"
-          width="400"
-          height="240"
           muted
           loop
           autoplay
           playsinline
+          preload="auto"
         >
           <source src="{{ 'video_thumbnail.mp4' | asset_url }}" type="video/mp4">
           Your browser does not support the video tag.

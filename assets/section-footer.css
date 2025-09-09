@@ -1,14 +1,20 @@
 /* Footer Styles - Johnny Dang & Co Design */
 
 .footer {
+  max-width: 1437px;
   background: #000000;
   color: #ffffff;
-  position: relative;
+  height: 155px;
+  /* position: absolute; */
+  /* display: flex; */
+
 }
 
 /* Newsletter Section */
 .footer__newsletter-section {
-  background: url('footerimage.png') center/cover;
+  background: url('footerimage.png');
+  background-position: center;
+  background-repeat: no-repeat;
   padding: 0 0 2rem 0;
   position: relative;
   height: 147px;
@@ -31,13 +37,16 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 2rem;
+  gap: 400px;
   position: relative;
   z-index: 2;
 }
 
 .footer__newsletter-text {
-  flex: 1;
+  display: flex;
+  /* justify-content: start; */
+  gap: 5px;
+  flex-direction: column;
 }
 
 .footer__newsletter-heading {
@@ -45,7 +54,7 @@
   font-size: 2.5rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 2px;
+  /* letter-spacing: 10px; */
   color: #ffffff;
   margin: 0 0 1rem 0;
 }
@@ -53,7 +62,10 @@
 .footer__newsletter-description {
   font-family: 'DM Sans', sans-serif;
   font-size: 16px;
+  width: 284px;
   color: #ffffff;
+  letter-spacing: 0px;
+
   margin: 0;
   line-height: 1.5;
 }
@@ -71,6 +83,8 @@
 .footer__newsletter-input {
   flex: 1;
   border: none;
+  padding-left: 8px;
+  height: 35px;
   border-radius: 6px;
   width: 264px;
   outline: none;
@@ -123,6 +137,7 @@
   background-size: 100px 100px;
   background-position: 0 0;
   height: 380px;
+  
 }
 
 .footer__grid {
@@ -149,16 +164,21 @@
 }
 
 .footer__company-description {
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'DM Sans';
   font-size: 16px;
-  line-height: 1.6;
+  font-family: DM Sans;
+  font-weight: 500;
+  /* line-height: 24px; */
+  letter-spacing: 0.4px;
   color: #ffffff;
   margin: 0;
+  height: 96px;
+  width: 384px;
 }
 
 /* Column Headings */
 .footer__column-heading {
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Playfair Display';
   font-size: 16px;
   font-weight: 600;
   color: #ff6b35;
@@ -195,10 +215,18 @@
 /* Customer Care */
 .footer__care-info p {
   font-family: 'DM Sans', sans-serif;
-  font-size: 16px;
+  font-size: 14px;
   color: #ffffff;
   margin: 0 0 0.8rem 0;
-  line-height: 1.4;
+  line-height: 100%;
+}
+
+.footer__care-info  {
+ display: flex;
+ /* align-items: center; */
+ justify-content: start;
+ flex-direction: column;
+ gap: 20px;
 }
 
 .footer__hours {
@@ -229,43 +257,36 @@
 }
 
 .footer__social-heading {
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'DM Sans';
   font-size: 12px;
   font-weight: 600;
   color: #ffffff;
   text-transform: uppercase;
-  letter-spacing: 1px;
-  margin-left: 20px;
+  letter-spacing: 1.32px;
+  /* margin-left: 20px; */
 }
 
 .footer__social-icons {
   display: flex;
-  gap: 1rem;
+  gap: 18px;
   padding-bottom: 5rem;
 }
 
 .footer__social-icon {
-  width: 40px;
-  height: 40px;
+  width: 20px;
+  height: 20px;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  justify-content: start;
   background: transparent;
-
   color: #ff6b35;
   text-decoration: none;
   transition: all 0.3s ease;
 }
 
-.footer__social-icon:hover {
-  background: #ff6b35;
-  color: #000000;
-  transform: translateY(-2px);
-}
 
 .footer__social-icon svg {
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
 }
 
 .footer__copyright {
@@ -273,10 +294,15 @@
 }
 
 .footer__copyright p {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 16px;
+  font-family: 'DM Sans';
+  /* font-size: 16px; */
   color: #ffffff;
   margin: 0;
+  font-family: DM Sans;
+  padding-bottom: 4.8rem;
+font-weight: 300;
+font-style: Light;
+font-size: 14px;
 }
 
 /* Mobile Responsive */
