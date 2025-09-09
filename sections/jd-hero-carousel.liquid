@@ -119,32 +119,20 @@
 
   <!-- Video Preview -->
   <div class="jd-hero__video-preview" {% if section.settings.video_url != blank %}onclick="window.open('{{ section.settings.video_url }}', '_blank')"{% endif %}>
-    {% if section.settings.video_thumbnail != blank %}
-      <img 
-        src="{{ section.settings.video_thumbnail | image_url: width: 400 }}"
-        alt="Video preview"
-        width="400"
-        height="240"
-        loading="lazy"
-      >
-    {% else %}
-      <div class="jd-hero__video-placeholder">
+    <div class="jd-hero__video-placeholder">
         <video 
-          class="jd-hero__video"
+
           muted
           loop
           autoplay
           playsinline
-          preload="auto"
+        
         >
           <source src="{{ 'video_thumbnail.mp4' | asset_url }}" type="video/mp4">
           Your browser does not support the video tag.
         </video>
       </div>
-    {% endif %}
-    <button class="jd-hero__play-btn" aria-label="Play video">
-      ▶
-    </button>
+  
   </div>
 </section>
 

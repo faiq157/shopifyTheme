@@ -383,9 +383,6 @@ html, body {
   width: 230px;
   height: 160px;
   border-radius: 12px;
-  border: 2px solid rgba(255, 255, 255, 0.15);
-box-shadow: 0 0 20px rgba(255, 98, 0, 0.3);
-
   overflow: hidden;
   cursor: pointer;
   transition: all 0.3s ease;
