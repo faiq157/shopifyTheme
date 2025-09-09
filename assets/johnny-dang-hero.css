@@ -7,10 +7,15 @@
   position: relative;
   display: flex;
   align-items: center;
+  justify-content: center;
   overflow: hidden;
   margin: 0 !important;
   padding: 0 !important;
   transition: background 1.5s ease-in-out;
+  --hero-text-color: #ffffff;
+  --hero-accent-color: #ffffff;
+  --hero-dot-color: #ffffff;
+  --hero-dot-inactive: rgba(255, 255, 255, 0.3);
 }
 
 .jd-hero::before {
@@ -59,6 +64,9 @@
               linear-gradient(108.2deg, rgba(0, 0, 0, 0) -29.77%, rgba(0, 0, 0, 0.41) 170.9%);
   background-size: 400% 400%;
   animation: gradientShift 8s ease-in-out infinite;
+  --hero-text-color: #FFFFFF;
+  --hero-accent-color: #FFFFFF;
+  --hero-dot-color: #FF6200;
 }
 
 .jd-hero[data-slide="1"] {
@@ -66,6 +74,9 @@
               linear-gradient(108.2deg, rgba(0, 0, 0, 0) -29.77%, rgba(0, 0, 0, 0.41) 170.9%);
   background-size: 400% 400%;
   animation: gradientPulse 10s ease-in-out infinite;
+  --hero-text-color: #F6E8FF;
+  --hero-accent-color: #FFFFFF;
+  --hero-dot-color: #A51AE6;
 }
 
 .jd-hero[data-slide="2"] {
@@ -73,6 +84,9 @@
               linear-gradient(108.2deg, rgba(0, 0, 0, 0) -29.77%, rgba(0, 0, 0, 0.41) 170.9%);
   background-size: 400% 400%;
   animation: gradientFlow 12s ease-in-out infinite;
+  --hero-text-color: #FFEDE0;
+  --hero-accent-color: #FFFFFF;
+  --hero-dot-color: #9911D8;
 }
 
 .jd-hero[data-slide="3"] {
@@ -80,6 +94,9 @@
               linear-gradient(108.2deg, rgba(0, 0, 0, 0) -29.77%, rgba(0, 0, 0, 0.41) 170.9%);
   background-size: 400% 400%;
   animation: gradientWave 9s ease-in-out infinite;
+  --hero-text-color: #FFF6E6;
+  --hero-accent-color: #FFFFFF;
+  --hero-dot-color: #FF7016;
 }
 
 .jd-hero[data-slide="4"] {
@@ -87,6 +104,9 @@
               linear-gradient(108.2deg, rgba(0, 0, 0, 0) -29.77%, rgba(0, 0, 0, 0.41) 170.9%);
   background-size: 400% 400%;
   animation: gradientSpiral 11s ease-in-out infinite;
+  --hero-text-color: #FFE8CC;
+  --hero-accent-color: #FFFFFF;
+  --hero-dot-color: #B64F0E;
 }
 
 .jd-hero__container {
@@ -97,6 +117,8 @@
   margin: 0 auto;
   padding: 0 2rem;
   padding-top: 80px; /* Account for transparent header height */
+  display: flex;
+  justify-content: center;
 }
 
 /* Remove any section-level margins and position at top */
@@ -146,6 +168,8 @@ html, body {
   grid-template-columns: 1fr 1.2fr;
   gap: 2rem;
   align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
   min-height: 80vh;
   opacity: 0;
   transform: translateX(50px);
@@ -158,16 +182,24 @@ html, body {
   pointer-events: none;
 }
 
+/* Hide all non-active slides completely */
+.jd-hero__slide:not(.active) {
+  opacity: 0;
+  visibility: hidden;
+}
+
 .jd-hero__slide.active {
   opacity: 1;
   transform: translateX(0);
   position: relative;
   z-index: 5;
   pointer-events: auto;
+  visibility: visible;
 }
 
 .jd-hero__slide.prev {
   transform: translateX(-50px);
+  opacity: 0;
 }
 
 .jd-hero__content {
@@ -177,19 +209,30 @@ html, body {
   pointer-events: auto;
   
 }
+/* .jd-hero__subtitle {
+  color: var(--hero-text-color);
+  font-size: 20px;
+  font-weight: 300;
+  letter-spacing: 0%; */
+  /* text-transform: uppercase; */
+  /* font-family: DM sans-serif; */
+/* } */
 
 .jd-hero__subtitle {
-  color: rgba(255, 255, 255, 0.9);
-  font-size: 1.4rem;
-  font-weight: 500;
-  letter-spacing: 0.25em;
+  position: relative;
+  top:40px;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;   /* Light */
+  font-size: 20px;
+  line-height: 22px;
+  letter-spacing: 0;  /* or normal */
   text-transform: uppercase;
-
-  font-family: sans-serif;
 }
 
+
+
 .jd-hero__title {
-  color: #ffffff;
+  color: var(--hero-text-color);
   font-size: clamp(4.5rem, 8vw, 8rem);
   font-weight: 700;
   line-height: 1.0;
@@ -207,7 +250,7 @@ html, body {
   align-items: center;
   gap: 0.5rem;
   background: transparent;
-  color: #ffffff;
+  color: var(--hero-accent-color);
   margin-top: 1rem;
   padding: 1.4rem 3rem;
   font-weight: 600;
@@ -243,24 +286,19 @@ html, body {
 }
 
 .jd-hero__media {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 1rem;
   width: 100%;
   height: 100%;
   z-index: 5;
 }
 
 .jd-hero__image {
-  width: 650px;
-  height: 650px;
+  width: 553px;
+  height: 426px;
   object-fit: cover;
-  object-position: center;
+  object-position: left;
   filter: drop-shadow(0 40px 80px rgba(0, 0, 0, 0.5));
   animation: float 6s ease-in-out infinite;
-  margin: 0 auto;
+  /* margin: 0 auto; */
   display: block;
   position: relative;
   z-index: 6;
@@ -287,7 +325,7 @@ html, body {
   width: 40px;
   height: 6px;
   border-radius: 3px;
-  background: rgba(255, 255, 255, 0.3);
+  background: var(--hero-dot-inactive, rgba(255, 255, 255, 0.3));
   cursor: pointer;
   transition: all 0.4s ease;
   border: none;
@@ -297,13 +335,13 @@ html, body {
 }
 
 .jd-hero__dot.active {
-  background: #ffffff;
+  background: var(--hero-dot-color, #ffffff) !important;
   width: 60px;
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+  box-shadow: 0 0 15px var(--hero-dot-color, rgba(255, 255, 255, 0.4));
 }
 
 .jd-hero__dot:hover {
-  background: rgba(255, 255, 255, 0.6);
+  background: var(--hero-dot-color, rgba(255, 255, 255, 0.6));
   width: 50px;
 }
 
@@ -333,17 +371,20 @@ html, body {
 .jd-hero__dot.active[data-slide="2"],
 .jd-hero__dot.active[data-slide="3"],
 .jd-hero__dot.active[data-slide="4"] {
-  background: #ffffff;
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+  background: var(--hero-dot-color, #ffffff);
+  box-shadow: 0 0 15px var(--hero-dot-color, rgba(255, 255, 255, 0.4));
 }
 
 .jd-hero__video-preview {
   position: absolute;
   bottom: 3rem;
   right: 3rem;
-  width: 280px;
+  width: 230px;
   height: 160px;
   border-radius: 12px;
+  border: 2px solid rgba(255, 255, 255, 0.15);
+box-shadow: 0 0 20px rgba(255, 98, 0, 0.3);
+
   overflow: hidden;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -382,6 +423,22 @@ html, body {
   top: 0;
   left: 0;
   z-index: 1;
+}
+
+/* Precise desktop layout for jd-hero__video (as requested) */
+@media screen and (min-width: 1025px) {
+  .jd-hero .jd-hero__video {
+    position: absolute;
+    width: 230.25px;
+    height: 181.39px;
+    top: 477.27px;
+    left: 1126.68px;
+    transform: rotate(0.17deg);
+    opacity: 0.61;
+    border-radius: 26px;
+    object-fit: cover;
+    overflow: hidden;
+  }
 }
 
 
@@ -690,32 +747,47 @@ html, body {
 }
 
 .jd-promotion-card__subtitle {
+  font-family: 'DM Sans', sans-serif;
   font-size: 12px;
-  font-weight: 300;
+  font-weight: 300;       /* Light */
+  line-height: 22px;      /* from Figma */
+  letter-spacing: 0;      /* no extra spacing */
   color: #ffffff;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
   margin-bottom: 0.5rem;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
-.jd-promotion-card__title {
+
+/* .jd-promotion-card__title {
   font-size:32px;
   font-weight: 700;
   color: #ffffff;
   line-height: 1.2;
   font-family: Georgia, 'Times New Roman', serif;
+} */
+
+.jd-promotion-card__title {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 22px;
+  font-weight: 800;       /* Medium */
+  line-height: 1.18;      /* 118% from Figma */
+  letter-spacing: 0.72px;      /* no extra spacing */
+  color: #ffffff;
 }
 
-.jd-promotion-card__icon {
+
+
+ .jd-promotion-card__icon {
   position: absolute;
   top: 6rem;
-  right: 10rem;
-}
+  right: 6rem;
+} 
 
 .jd-promotion-card__icon-circle {
-  width: 60px;
-  height: 60px;
+  width: 80px;
+  height: 80px;
+  position: relative;
+  right:15px;
   border: 2px dashed rgba(255, 255, 255, 0.6);
   border-radius: 50%;
   display: flex;
@@ -725,7 +797,7 @@ html, body {
 
 /* Celebrity Endorsements Card */
 .jd-promotion-card--celebrity {
-  background: linear-gradient(135deg, #4C1D95, #6B46C1);
+  background:  radial-gradient(50% 55.25% at 27.17% 50%, rgba(75, 0, 110, 0.35) 0%, rgba(145, 0, 212, 0.35) 100%);
   border: 1px solid rgba(255, 255, 255, 0.1);
   flex-direction: column;
   width: 392px;
@@ -734,12 +806,12 @@ html, body {
 .jd-promotion-card--celebrity::before {
   content: '';
   position: absolute;
-  top: 0;
+  top: 10px;
   left: 0;
   right: 0;
-  bottom: 0;
+  bottom: 10px;
   background-image: url("lines.png");
-  background-size: cover;
+  background-size: 150%;
   background-position: center;
   background-repeat: no-repeat; 
   zoom: 2;
@@ -759,13 +831,22 @@ html, body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; 
   margin-left: 20px;
 }
-
 .jd-promotion-card__highlight {
-  background: #000000;
+  background: black;
+  color: #ffffff;                 /* ensures readability */
+  font-family: 'DM Sans', sans-serif;
+  font-size: 22px;
+  font-weight: 800;               /* ExtraBold */
+  line-height: 16.8px;
+  letter-spacing: 0.72px;
+  text-align: center;
+  text-transform: capitalize;
+  
   padding: 0.25rem 0.5rem;
   border-radius: 4px;
   margin-left: 0.25rem;
 }
+
 
 .jd-promotion-card__celebrities {
   display: flex;
@@ -855,10 +936,15 @@ html, body {
    ======================================== */
 
 .jd-marquee {
-  background: #000000;
-  color: #ffffff;
+  background: hsla(0, 0%, 0%, 1);
   padding: 1rem 0;
   position: relative;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.9) 0%,   /* deep black at bottom */
+    rgba(0, 0, 0, 0.7) 30%,  /* slightly lighter black */
+    rgba(0, 0, 0, 1) 60%     /* solid black towards top */
+  );
   overflow: hidden;
   -webkit-backdrop-filter: blur(100px);
   backdrop-filter: blur(100px);
@@ -889,6 +975,8 @@ html, body {
   display: flex;
   animation: scroll-marquee 30s linear infinite;
   gap: 3rem;
+  justify-content: center;
+  align-items: center;
   white-space: nowrap;
   position: relative;
   z-index: 2; /* above the blur overlay */
@@ -896,17 +984,34 @@ html, body {
 
 .jd-marquee__item {
   flex-shrink: 0;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;     /* vertical center */
+  justify-content: center;
 }
 
-.jd-marquee__text {
-  color: #ffffff;
-  text-decoration: none;
-  text-transform: uppercase;
-  font-size: 3rem;
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  transition: all 0.3s ease;
-}
+  /* .jd-marquee__text {
+    color: #ffffff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 3rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    transition: all 0.3s ease;
+  } */
+
+  .jd-marquee__text {
+    color: rgba(255, 255, 255, 1);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;   
+    font-size: 20px;    
+    line-height: 22px;  
+    letter-spacing: 0;  
+
+    text-transform: uppercase;        /* remove extra spacing */
+  }
+  
+
 
 /* Scrolling animation */
 @keyframes scroll-marquee {

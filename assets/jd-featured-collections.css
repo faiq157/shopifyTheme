@@ -59,9 +59,9 @@
 }
 
 .jd-featured-collections__title {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Playfair Display';
   font-size: 3rem;
-  font-weight: 600;
+  font-weight: 500;
   color: #ffffff;
   margin: 0 0 2rem 0;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
