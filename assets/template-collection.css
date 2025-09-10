@@ -57,6 +57,39 @@
   margin-bottom: 15rem;
 }
 
+
+.pagination-wrapper {
+  width: 100%;
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center; /* centers the pagination below grid */
+}
+
+
+.facets-vertical {
+  display: grid;
+  grid-template-columns: 250px 1fr; /* sidebar fixed width, products take rest */
+  gap: 2rem;
+}
+
+.facets-wrapper {
+  background: #000;
+  color: #fff;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  height: fit-content;
+  position: sticky;
+  top: 2rem;
+}
+
+.pagination-wrapper {
+  width: 100%;
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+
 @media screen and (max-width: 989px) {
   .collection .slider--tablet.product-grid {
     scroll-padding-left: 1.5rem;
@@ -96,4 +129,37 @@
 
 .collection__view-all a:not(.link) {
   margin-top: 1rem;
+}
+
+/* Force 4 products per row on desktop for collection grids */
+@media screen and (min-width: 990px) {
+  .grid--4-col-desktop > .grid__item {
+    flex: 0 0 25% !important;
+    max-width: 25% !important;
+  }
+}
+
+/* Ensure pagination sits below the product grid and spans full width */
+.collection .pagination-wrapper {
+  clear: both;
+  width: 100%;
+}
+
+/* If any container uses CSS grid, make pagination span all columns */
+#ProductGridContainer .pagination-wrapper,
+.collection .pagination-wrapper {
+  grid-column: 1 / -1;
+}
+
+/* Add spacing from the grid */
+#product-grid + .pagination-wrapper,
+.collection .pagination-wrapper {
+  margin-top: 3rem;
+}
+
+/* Ensure price is visible on product cards */
+.card-information .price {
+  display: block;
+  /* opacity: 1; */
+  visibility: visible;
 }

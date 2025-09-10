@@ -36,7 +36,7 @@
   });
 </script>
 
-<div class="jd-header-wrapper{% if request.page_type == 'index' %} home-page{% endif %}">
+<div class="jd-header-wrapper{% if request.page_type == 'index' %} home-page{% endif %}{% if request.page_type == 'list-collections' %} collections-page{% endif %}">
   <header class="jd-header">
     <!-- Logo -->
     <div class="jd-header__logo">

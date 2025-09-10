@@ -20,6 +20,12 @@
   position: relative;
 }
 
+/* Ensure collections page has black header background */
+.jd-header-wrapper.collections-page {
+  background: #000000 !important;
+  position: relative;
+}
+
 .jd-header-wrapper.scrolled {
   background: rgba(0, 0, 0, 0.95) !important;
   -webkit-backdrop-filter: blur(20px);
