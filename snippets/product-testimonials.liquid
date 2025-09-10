@@ -1,0 +1,66 @@
+{{ 'product-testimonials.css' | asset_url | stylesheet_tag }}
+
+<div class="celebrity-testimonials-section product-testimonials">
+    <h2 class="pt-title">JOIN THE FLAWLESS FAMILIES</h2>
+  <div class="page-width">
+    
+    <div class="pt-header">
+      
+      <div class="pt-controls">
+        <button class="pt-btn carousel-btn-prev" aria-label="Previous testimonials">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <button class="pt-btn carousel-btn-next" aria-label="Next testimonials">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+    </div>
+    <div class="testimonials-carousel">
+      <div class="pt-viewport">
+        <div class="pt-track">
+          {% for idx in (1..4) %}
+            <div class="pt-item">
+              <div class="pt-circle">
+                {% assign video_file = 'testo' | append: idx | append: '.mp4' %}
+                <video class="pt-video" width="160" height="160" muted loop autoplay playsinline>
+                  <source src="{{ video_file | asset_url }}" type="video/mp4">
+                </video>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function(){
+    var root = document.currentScript && document.currentScript.previousElementSibling ? document.currentScript.previousElementSibling : document.querySelector('.product-testimonials');
+    if(!root) return;
+    var container = root.querySelector('.pt-viewport');
+    var track = root.querySelector('.pt-track');
+    var prev = root.querySelector('.carousel-btn-prev');
+    var next = root.querySelector('.carousel-btn-next');
+    if(!container || !track || !prev || !next) return;
+
+    function updateButtons(){
+      prev.disabled = container.scrollLeft <= 0;
+      var maxScroll = track.scrollWidth - container.clientWidth - 1;
+      next.disabled = container.scrollLeft >= maxScroll;
+    }
+
+    prev.addEventListener('click', function(){
+      container.scrollBy({ left: -container.clientWidth, behavior: 'smooth' });
+      setTimeout(updateButtons, 350);
+    });
+    next.addEventListener('click', function(){
+      container.scrollBy({ left: container.clientWidth, behavior: 'smooth' });
+      setTimeout(updateButtons, 350);
+    });
+    container.addEventListener('scroll', updateButtons, { passive: true });
+    window.addEventListener('resize', updateButtons);
+    updateButtons();
+  })();
+</script>
+

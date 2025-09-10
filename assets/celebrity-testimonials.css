@@ -111,7 +111,7 @@
   display: flex;
   gap: 2rem;
   transition: transform 0.5s ease;
-  padding: 4rem 4rem 4rem 4rem;
+ 
   justify-content: center;
   align-items: center;
 
@@ -141,32 +141,8 @@
   border-width: 3px;
   opacity: 1;
   transform: rotate(0deg);
-  /* Circle gradient background */
-  background: radial-gradient(circle, rgba(255, 98, 0, 0.1) 0%, rgba(255, 98, 0, 0.05) 50%, transparent 100%);
-  /* Spacing between frame and video */
-  padding: 15px;
-}
 
-.testimonial-image-wrapper.orange-glow {
-  box-shadow: 
-    0 0 15px rgba(255, 107, 53, 0.4),
-    0 0 30px rgba(255, 107, 53, 0.3),
-    0 0 45px rgba(255, 107, 53, 0.2),
-    0 0 60px rgba(255, 107, 53, 0.1);
-  border: 3px solid #FF6200;
-  background: radial-gradient(circle, rgba(255, 98, 0, 0.15) 0%, rgba(255, 98, 0, 0.08) 50%, transparent 100%);
 }
-
-.testimonial-image-wrapper.purple-glow {
-  box-shadow: 
-    0 0 15px rgba(183, 45, 247, 0.4),
-    0 0 30px rgba(183, 45, 247, 0.3),
-    0 0 45px rgba(183, 45, 247, 0.2),
-    0 0 60px rgba(183, 45, 247, 0.1);
-  border: 3px solid #FF6200;
-  background: radial-gradient(circle, rgba(183, 45, 247, 0.15) 0%, rgba(183, 45, 247, 0.08) 50%, transparent 100%);
-}
-
 
 
 
