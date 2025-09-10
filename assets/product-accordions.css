@@ -131,6 +131,34 @@
   height: auto;
 }
 
+/* Stock indicator (above Add to Bag) */
+.product__stock-indicator {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin: 0 0 0.75rem 0;
+}
+
+.product__stock-indicator .svg-wrapper { display: none; }
+
+.product__stock-indicator .stock-label {
+  color: #ffffff;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+
+/* New CSS dots */
+.stock-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.stock-dot--in { background-color: #487701; }
+.stock-dot--out { background-color: #777777; }
+
 /* Responsive Design */
 @media screen and (max-width: 749px) {
   .product__accordion .accordion__title {
