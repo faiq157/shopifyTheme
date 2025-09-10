@@ -64,3 +64,25 @@
   })();
 </script>
 
+<div class="pt-contact-card">
+  <a class="pt-contact-item" href="mailto:{{ shop.email }}">
+    <span class="pt-contact-icon" aria-hidden="true">
+      
+      {{- 'EmailNewsletterIcon.svg' | inline_asset_content -}}
+    </span>
+    <span class="pt-contact-label">Email Us</span>
+  </a>
+  <a class="pt-contact-item" href="tel:{{ shop.phone | default: '' }}">
+    <span class="pt-contact-icon" aria-hidden="true">
+      {{- 'PhoneInIcon.svg' | inline_asset_content -}}
+    </span>
+    <span class="pt-contact-label">Call Us</span>
+  </a>
+  <a class="pt-contact-item" href="https://wa.me/{{ shop.phone | remove: ' ' | remove: '+' }}" target="_blank" rel="noopener">
+    <span class="pt-contact-icon" aria-hidden="true">
+      {{- 'icons8-whatsapp.svg' | inline_asset_content -}}
+    </span>
+    <span class="pt-contact-label">WhatsApp Us</span>
+  </a>
+</div>
+
