@@ -52,6 +52,13 @@
   word-break: break-word;
   overflow-x: auto;
   padding: 0 0.6rem;
+  font-family: DM Sans;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 12px;
+  line-height: 15.96px;
+  letter-spacing: 0.24px;
+  vertical-align: middle;
 }
 
 .accordion__content img {

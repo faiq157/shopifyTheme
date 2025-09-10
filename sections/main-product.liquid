@@ -730,69 +730,13 @@
             <!-- Payment Methods Section -->
             <div class="product__payment-methods">
               <h2 class="h4 payment-methods__title">CHECKOUT SAFELY USING YOUR PREFERRED PAYMENT METHOD</h2>
+              {%- assign payment_logo_files = "AmazonPay.svg,paypal.svg,bitcoin.svg,MasterCard.svg,DinersClub.svg,JCB.svg,Mestero.svg,applepay.svg,shopifypay.svg,diners.svg,Discover.svg" | split: "," -%}
               <div class="payment-methods__logos">
-                <div class="payment-logo">
-                  <svg width="40" height="24" viewBox="0 0 40 24" fill="none">
-                    <circle cx="12" cy="12" r="10" fill="#F7931A"/>
-                    <text x="12" y="16" text-anchor="middle" fill="white" font-size="12" font-weight="bold">B</text>
-                  </svg>
-                </div>
-                <div class="payment-logo">
-                  <svg width="40" height="24" viewBox="0 0 40 24" fill="none">
-                    <rect width="40" height="24" rx="4" fill="#0070BA"/>
-                    <text x="20" y="16" text-anchor="middle" fill="white" font-size="8" font-weight="bold">PayPal</text>
-                  </svg>
-                </div>
-                <div class="payment-logo">
-                  <svg width="40" height="24" viewBox="0 0 40 24" fill="none">
-                    <circle cx="12" cy="12" r="10" fill="#EB001B"/>
-                    <circle cx="28" cy="12" r="10" fill="#F79E1B"/>
-                    <circle cx="20" cy="12" r="8" fill="#FF5F00"/>
-                  </svg>
-                </div>
-                <div class="payment-logo">
-                  <svg width="40" height="24" viewBox="0 0 40 24" fill="none">
-                    <rect width="40" height="24" rx="4" fill="#1A1F71"/>
-                    <text x="20" y="16" text-anchor="middle" fill="white" font-size="10" font-weight="bold">VISA</text>
-                  </svg>
-                </div>
-                <div class="payment-logo">
-                  <svg width="40" height="24" viewBox="0 0 40 24" fill="none">
-                    <rect width="40" height="24" rx="4" fill="#007F3F"/>
-                    <text x="20" y="16" text-anchor="middle" fill="white" font-size="8" font-weight="bold">JCB</text>
-                  </svg>
-                </div>
-                <div class="payment-logo">
-                  <svg width="40" height="24" viewBox="0 0 40 24" fill="none">
-                    <rect width="40" height="24" rx="4" fill="#000000"/>
-                    <text x="20" y="16" text-anchor="middle" fill="white" font-size="6" font-weight="bold">amazon Pay</text>
-                  </svg>
-                </div>
-                <div class="payment-logo">
-                  <svg width="40" height="24" viewBox="0 0 40 24" fill="none">
-                    <rect width="40" height="24" rx="4" fill="#000000"/>
-                    <circle cx="12" cy="12" r="6" fill="white"/>
-                    <text x="20" y="16" text-anchor="middle" fill="white" font-size="6" font-weight="bold">Pay</text>
-                  </svg>
-                </div>
-                <div class="payment-logo">
-                  <svg width="40" height="24" viewBox="0 0 40 24" fill="none">
-                    <circle cx="20" cy="12" r="10" fill="#0079C1"/>
-                    <text x="20" y="16" text-anchor="middle" fill="white" font-size="6" font-weight="bold">DCI</text>
-                  </svg>
-                </div>
-                <div class="payment-logo">
-                  <svg width="40" height="24" viewBox="0 0 40 24" fill="none">
-                    <rect width="40" height="24" rx="4" fill="#EE9441"/>
-                    <text x="20" y="16" text-anchor="middle" fill="white" font-size="6" font-weight="bold">DISCOVER</text>
-                  </svg>
-                </div>
-                <div class="payment-logo">
-                  <svg width="40" height="24" viewBox="0 0 40 24" fill="none">
-                    <rect width="40" height="24" rx="4" fill="#4285F4"/>
-                    <text x="20" y="16" text-anchor="middle" fill="white" font-size="6" font-weight="bold">G Pay</text>
-                  </svg>
-                </div>
+                {%- for file in payment_logo_files -%}
+                  <div class="payment-logo">
+                    {{- file | strip | inline_asset_content -}}
+                  </div>
+                {%- endfor -%}
               </div>
             </div>
           </div>
