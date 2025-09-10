@@ -1,6 +1,7 @@
 {{ 'section-collection-list.css' | asset_url | stylesheet_tag }}
 {{ 'component-card.css' | asset_url | stylesheet_tag }}
 {{ 'component-slider.css' | asset_url | stylesheet_tag }}
+{{ 'component-collection-hero.css' | asset_url | stylesheet_tag }}
 
 {%- style -%}
   .section-{{ section.id }}-padding {
@@ -25,6 +26,48 @@
 -%}
 
 <div class="color-{{ section.settings.color_scheme }} gradient">
+  <!-- Collections Hero Section -->
+  <div class="collections-hero">
+    <div class="collections-hero__container page-width">
+      <div class="collections-hero__content">
+        <p class="collections-hero__subtitle">{{ section.settings.hero_subtitle | default: 'the collection trusted by icons' }}</p>
+        
+        <h1 class="collections-hero__title">
+          {{ section.settings.hero_title | default: 'Shop All Collection' }}
+        </h1>
+        
+       
+        
+        {% if section.settings.show_hero_cta and section.settings.hero_cta_text != blank and section.settings.hero_cta_link != blank %}
+          <a href="{{ section.settings.hero_cta_link }}" class="collections-hero__cta">
+            {{ section.settings.hero_cta_text }}
+            <svg class="collections-hero__arrow" width="12" height="12" viewBox="0 0 12 12" fill="none">
+              <path d="M1 11L11 1M11 1H1M11 1V11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        {% endif %}
+      </div>
+      
+      {% if section.settings.show_hero_image and section.settings.hero_image != blank %}
+        <div class="collections-hero__image">
+          {%- liquid
+            assign image_height = section.settings.hero_image_height
+            assign image_width = section.settings.hero_image_width
+            assign image_alt = section.settings.hero_image.alt | default: section.settings.hero_title
+          -%}
+          <img
+            src="{{ section.settings.hero_image | image_url: width: image_width }}"
+            alt="{{ image_alt }}"
+            width="{{ image_width }}"
+            height="{{ image_height }}"
+            loading="eager"
+            class="collections-hero__img"
+          >
+        </div>
+      {% endif %}
+    </div>
+  </div>
+
   <div class="collection-list-wrapper page-width isolate{% if show_mobile_slider %} page-width-desktop{% endif %}{% if section.settings.title == blank %} no-heading{% endif %}{% if section.settings.show_view_all == false or section.blocks.size > collections.size %} no-mobile-link{% endif %} section-{{ section.id }}-padding">
     {%- unless section.settings.title == blank -%}
       <div class="title-wrapper-with-link{% if show_mobile_slider %} title-wrapper--self-padded-tablet-down{% else %} title-wrapper--self-padded-mobile{% endif %} title-wrapper--no-top-margin">
@@ -143,6 +186,80 @@
     "groups": ["header", "footer"]
   },
   "settings": [
+    {
+      "type": "header",
+      "content": "Hero Section"
+    },
+    {
+      "type": "text",
+      "id": "hero_subtitle",
+      "label": "Hero Subtitle",
+      "default": "Discover Our"
+    },
+    {
+      "type": "text",
+      "id": "hero_title",
+      "label": "Hero Title",
+      "default": "Collections"
+    },
+    {
+      "type": "richtext",
+      "id": "hero_description",
+      "label": "Hero Description",
+      "default": "<p>Explore our curated collection of premium jewelry and accessories.</p>"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_hero_cta",
+      "label": "Show hero call-to-action button",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "hero_cta_text",
+      "label": "Hero button text",
+      "default": "Shop Now"
+    },
+    {
+      "type": "url",
+      "id": "hero_cta_link",
+      "label": "Hero button link"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_hero_image",
+      "label": "Show hero image",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Hero Image"
+    },
+    {
+      "type": "range",
+      "id": "hero_image_width",
+      "min": 200,
+      "max": 1200,
+      "step": 50,
+      "unit": "px",
+      "label": "Hero image width",
+      "default": 600
+    },
+    {
+      "type": "range",
+      "id": "hero_image_height",
+      "min": 200,
+      "max": 800,
+      "step": 50,
+      "unit": "px",
+      "label": "Hero image height",
+      "default": 400
+    },
+    {
+      "type": "header",
+      "content": "Collection List"
+    },
     {
       "type": "inline_richtext",
       "id": "title",

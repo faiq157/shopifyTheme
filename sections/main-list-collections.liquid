@@ -1,10 +1,127 @@
 {{ 'component-card.css' | asset_url | stylesheet_tag }}
 {{ 'section-collection-list.css' | asset_url | stylesheet_tag }}
+{{ 'component-collection-hero.css' | asset_url | stylesheet_tag }}
+{{ 'section-collection-bubbles.css' | asset_url | stylesheet_tag }}
 
-<div class="page-width">
-  <h1 class="title title--primary inline-richtext{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
-    {{ section.settings.title }}
-  </h1>
+<!-- Collections Hero Section -->
+<div class="collections-hero">
+  <div class="collections-hero__container page-width">
+    <div class="collections-hero__content">
+      <p class="collections-hero__subtitle">{{ section.settings.hero_subtitle | default: 'the collection trusted by icons' }}</p>
+      
+      <h1 class="collections-hero__title">
+        {{ section.settings.hero_title | default: 'Shop All Collection' }}
+      </h1>
+   
+      
+      {% if section.settings.show_hero_cta and section.settings.hero_cta_text != blank and section.settings.hero_cta_link != blank %}
+        <a href="{{ section.settings.hero_cta_link }}" class="collections-hero__cta">
+          {{ section.settings.hero_cta_text }}
+          <svg class="collections-hero__arrow" width="12" height="12" viewBox="0 0 12 12" fill="none">
+            <path d="M1 11L11 1M11 1H1M11 1V11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      {% endif %}
+    </div>
+    
+    {% if section.settings.show_hero_image and section.settings.hero_image != blank %}
+      <div class="collections-hero__image">
+        {%- liquid
+          assign image_height = section.settings.hero_image_height
+          assign image_width = section.settings.hero_image_width
+          assign image_alt = section.settings.hero_image.alt | default: section.settings.hero_title
+        -%}
+        <img
+          src="{{ section.settings.hero_image | image_url: width: image_width }}"
+          alt="{{ image_alt }}"
+          width="{{ image_width }}"
+          height="{{ image_height }}"
+          loading="eager"
+          class="collections-hero__img"
+        >
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+<!-- Category Bubbles just after Hero -->
+<div class="collections-bubbles page-width">
+  {% if section.settings.bubbles_heading != blank %}
+    <h2 class="collections-bubbles__heading">{{ section.settings.bubbles_heading }}</h2>
+  {% endif %}
+
+  <ul class="collections-bubbles__list">
+    {% assign rendered_any = false %}
+    {% for block in section.blocks %}
+      {% if block.type == 'category' %}
+        {% assign coll = block.settings.collection %}
+        {% if coll %}
+          {% assign rendered_any = true %}
+          <li class="collections-bubbles__item" {{ block.shopify_attributes }}>
+            <a href="{{ coll.url }}">
+              {% if coll.image %}
+                <img src="{{ coll.image | image_url: width: 160 }}" alt="{{ coll.title }}" class="collections-bubbles__img">
+              {% else %}
+                <span class="collections-bubbles__img collections-bubbles__img--placeholder" aria-hidden="true">{{ coll.title | slice: 0, 1 }}</span>
+              {% endif %}
+              <span class="collections-bubbles__title">{{ block.settings.title | default: coll.title }}</span>
+            </a>
+          </li>
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+
+    {% unless rendered_any %}
+      {% assign featured_collections = collections | slice: 0, 6 %}
+      {% for coll in featured_collections %}
+        <li class="collections-bubbles__item">
+          <a href="{{ coll.url }}">
+            {% if coll.image %}
+              <img src="{{ coll.image | image_url: width: 160 }}" alt="{{ coll.title }}" class="collections-bubbles__img">
+            {% else %}
+              <span class="collections-bubbles__img collections-bubbles__img--placeholder" aria-hidden="true">{{ coll.title | slice: 0, 1 }}</span>
+            {% endif %}
+            <span class="collections-bubbles__title">{{ coll.title }}</span>
+          </a>
+        </li>
+      {% endfor %}
+    {% endunless %}
+  </ul>
+</div>
+
+<div class="page-width collections-layout">
+
+  <aside class="collections-sidebar" aria-label="Filter collections">
+    <h3 class="sidebar-title">Filter</h3>
+    <div class="sidebar-form">
+      <label for="CollectionsFilterInput" class="visually-hidden">Filter collections</label>
+      <input id="CollectionsFilterInput" type="search" placeholder="Search categories" autocomplete="off">
+    </div>
+
+    <h4 class="sidebar-subtitle">All categories</h4>
+    <ul class="collections-sidebar__list" id="CollectionsSidebarList">
+      {%- liquid
+        assign sidebar_collections = collections
+        case section.settings.sort
+          when 'products_high', 'products_low'
+            assign sidebar_collections = sidebar_collections | sort: 'all_products_count'
+          when 'date', 'date_reversed'
+            assign sidebar_collections = sidebar_collections | sort: 'published_at'
+        endcase
+        if section.settings.sort == 'products_high' or section.settings.sort == 'date_reversed' or section.settings.sort == 'alphabetical_reversed'
+          assign sidebar_collections = sidebar_collections | reverse
+        endif
+      -%}
+      {%- for c in sidebar_collections -%}
+        <li class="collections-sidebar__item" data-title="{{ c.title | escape | downcase }}">
+          <a href="{{ c.url }}">{{ c.title }}</a>
+        </li>
+      {%- endfor -%}
+    </ul>
+  </aside>
+  
+  <div class="collections-content">
+
   {%- liquid
     case section.settings.sort
       when 'products_high', 'products_low'
@@ -31,6 +148,7 @@
       {%- for collection in collections -%}
         <li
           class="collection-list__item grid__item{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+          data-title="{{ collection.title | escape | downcase }}"
           {% if settings.animations_reveal_on_scroll %}
             data-cascade
             style="--animation-order: {{ forloop.index }};"
@@ -46,12 +164,114 @@
     </ul>
     {% render 'pagination', paginate: paginate %}
   {%- endpaginate -%}
+  </div>
 </div>
+
+<script>
+  (function() {
+    var input = document.getElementById('CollectionsFilterInput');
+    if (!input) return;
+    var gridItems = document.querySelectorAll('.collection-list__item[data-title]');
+    var listItems = document.querySelectorAll('.collections-sidebar__item[data-title]');
+    function applyFilter() {
+      var q = (input.value || '').trim().toLowerCase();
+      gridItems.forEach(function(el){
+        var title = el.getAttribute('data-title') || '';
+        el.style.display = q === '' || title.indexOf(q) !== -1 ? '' : 'none';
+      });
+      listItems.forEach(function(el){
+        var title = el.getAttribute('data-title') || '';
+        el.style.display = q === '' || title.indexOf(q) !== -1 ? '' : 'none';
+      });
+    }
+    input.addEventListener('input', applyFilter);
+  })();
+</script>
 {% schema %}
 {
   "name": "t:sections.main-list-collections.name",
   "class": "section",
   "settings": [
+    {
+      "type": "header",
+      "content": "Hero Section"
+    },
+    {
+      "type": "text",
+      "id": "hero_subtitle",
+      "label": "Hero Subtitle",
+      "default": "the collection trusted by icons"
+    },
+    {
+      "type": "text",
+      "id": "hero_title",
+      "label": "Hero Title",
+      "default": "Shop All Collection"
+    },
+    {
+      "type": "richtext",
+      "id": "hero_description",
+      "label": "Hero Description",
+      "default": "<p>Explore our curated collection of premium jewelry and accessories.</p>"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_hero_cta",
+      "label": "Show hero call-to-action button",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "hero_cta_text",
+      "label": "Hero button text",
+      "default": "Shop Now"
+    },
+    {
+      "type": "url",
+      "id": "hero_cta_link",
+      "label": "Hero button link"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_hero_image",
+      "label": "Show hero image",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Hero Image"
+    },
+    {
+      "type": "range",
+      "id": "hero_image_width",
+      "min": 200,
+      "max": 1200,
+      "step": 50,
+      "unit": "px",
+      "label": "Hero image width",
+      "default": 600
+    },
+    {
+      "type": "range",
+      "id": "hero_image_height",
+      "min": 200,
+      "max": 800,
+      "step": 50,
+      "unit": "px",
+      "label": "Hero image height",
+      "default": 400
+    },
+    {
+      "type": "header",
+      "content": "Collection List"
+    },
+    {
+      "type": "text",
+      "id": "bubbles_heading",
+      "label": "Categories heading",
+      "default": "Shop by category"
+    },
     {
       "type": "inline_richtext",
       "id": "title",
@@ -116,7 +336,7 @@
       "min": 1,
       "max": 6,
       "step": 1,
-      "default": 3,
+      "default": 4,
       "label": "t:sections.main-list-collections.settings.columns_desktop.label"
     },
     {
@@ -134,6 +354,29 @@
       ],
       "default": "2",
       "label": "t:sections.main-list-collections.settings.columns_mobile.label"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "category",
+      "name": "Category",
+      "settings": [
+        { "type": "collection", "id": "collection", "label": "Collection" },
+        { "type": "text", "id": "title", "label": "Title override" }
+      ]
+    }
+  ],
+  "max_blocks": 12,
+  "presets": [
+    {
+      "name": "Categories",
+      "blocks": [
+        { "type": "category" },
+        { "type": "category" },
+        { "type": "category" },
+        { "type": "category" },
+        { "type": "category" }
+      ]
     }
   ]
 }
