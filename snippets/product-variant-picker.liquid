@@ -27,6 +27,7 @@
           endif
         endif
       -%}
+      <hr style="border: 0; border-top: 0.8px solid #3F3F3F; margin: 2rem 0;">
       {%- if picker_type == 'swatch' -%}
         <fieldset class="js product-form__input product-form__input--swatch">
           <legend class="form__label">
@@ -86,7 +87,7 @@
         </div>
       {%- endif -%}
     {%- endfor -%}
-
+    <hr style="border: 0; border-top: 0.8px solid #3F3F3F; margin: 2rem 0;">
     <script type="application/json" data-selected-variant>
       {{ product.selected_or_first_available_variant | json }}
     </script>

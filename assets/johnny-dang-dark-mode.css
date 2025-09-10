@@ -48,9 +48,9 @@ body {
   color: rgb(var(--color-foreground));
 } 
 
-p, span, div, li {
+/* p, span, div, li {
   color: rgb(var(--color-foreground));
-}
+} */
 
 /* LINKS */
 /* a {
@@ -259,18 +259,18 @@ input:focus, textarea:focus, select:focus {
 }
 
 /* NAVIGATION ICONS */
-.header__icon, .header__icon--summary {
+/* .header__icon, .header__icon--summary {
   color: #ffffff !important;
   fill: #ffffff !important;
-}
+} */
 
 .header__icon svg, .header__icon--summary svg {
   fill: #ffffff !important;
   color: #ffffff !important;
 }
-
+/* 
 /* COMPREHENSIVE WHITE TEXT FOR ALL HEADER ELEMENTS */
-.shopify-section-header *, 
+/* .shopify-section-header *, 
 .header-wrapper *, 
 .header *, 
 .header a, 
@@ -286,7 +286,7 @@ input:focus, textarea:focus, select:focus {
 .header__search *,
 .predictive-search * {
   color: #ffffff !important;
-}
+} */ 
 
 /* Header logo text */
 .header__heading a,

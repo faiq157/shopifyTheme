@@ -489,7 +489,7 @@ h6:empty {
   box-shadow: none;
   text-decoration: underline;
   text-underline-offset: 0.3rem;
-  color: rgb(var(--color-link));
+
   background-color: transparent;
   font-size: 1.4rem;
   font-family: inherit;
@@ -2524,9 +2524,9 @@ input[type='checkbox'] {
   justify-content: center;
 }
 
-.header__icon {
+/* .header__icon {
   color: rgb(var(--color-foreground));
-}
+} */
 
 .header__icon span {
   height: 100%;
