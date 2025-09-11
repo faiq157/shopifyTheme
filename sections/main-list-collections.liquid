@@ -44,55 +44,23 @@
   </div>
 </div>
 
-<!-- Category Bubbles just after Hero -->
-<div class="collections-bubbles page-width">
-  {% if section.settings.bubbles_heading != blank %}
-    <h2 class="collections-bubbles__heading">{{ section.settings.bubbles_heading }}</h2>
-  {% endif %}
 
-  <ul class="collections-bubbles__list">
-    {% assign rendered_any = false %}
-    {% for block in section.blocks %}
-      {% if block.type == 'category' %}
-        {% assign coll = block.settings.collection %}
-        {% if coll %}
-          {% assign rendered_any = true %}
-          <li class="collections-bubbles__item" {{ block.shopify_attributes }}>
-            <a href="{{ coll.url }}">
-              {% if coll.image %}
-                <img src="{{ coll.image | image_url: width: 160 }}" alt="{{ coll.title }}" class="collections-bubbles__img">
-              {% else %}
-                <span class="collections-bubbles__img collections-bubbles__img--placeholder" aria-hidden="true">{{ coll.title | slice: 0, 1 }}</span>
-              {% endif %}
-              <span class="collections-bubbles__title">{{ block.settings.title | default: coll.title }}</span>
-            </a>
-          </li>
-        {% endif %}
-      {% endif %}
-    {% endfor %}
+{{ 'static-collection-bubbles.css' | asset_url | stylesheet_tag }}
+{{ 'bubble-filters.css' | asset_url | stylesheet_tag }}
+{{ 'collections-main-layout.css' | asset_url | stylesheet_tag }}
+{{ 'bubble-filters.js' | asset_url | script_tag }}
 
-    {% unless rendered_any %}
-      {% assign featured_collections = collections | slice: 0, 6 %}
-      {% for coll in featured_collections %}
-        <li class="collections-bubbles__item">
-          <a href="{{ coll.url }}">
-            {% if coll.image %}
-              <img src="{{ coll.image | image_url: width: 160 }}" alt="{{ coll.title }}" class="collections-bubbles__img">
-            {% else %}
-              <span class="collections-bubbles__img collections-bubbles__img--placeholder" aria-hidden="true">{{ coll.title | slice: 0, 1 }}</span>
-            {% endif %}
-            <span class="collections-bubbles__title">{{ coll.title }}</span>
-          </a>
-        </li>
-      {% endfor %}
-    {% endunless %}
-  </ul>
-</div>
-
-<div class="page-width collections-layout">
-
+<!-- Main Layout Container -->
+<div class="page-width collections-main-layout">
+  <!-- Left Sidebar with Filters -->
   <aside class="collections-sidebar" aria-label="Filter collections">
     <h3 class="sidebar-title">Filter</h3>
+    
+    <!-- Bubble Style Filters using Shopify Facets -->
+    <div class="bubble-filters">
+      {% render 'facets', results: collection, enable_filtering: true, enable_sorting: false, filter_type: 'vertical' %}
+    </div>
+
     <div class="sidebar-form">
       <label for="CollectionsFilterInput" class="visually-hidden">Filter collections</label>
       <input id="CollectionsFilterInput" type="search" placeholder="Search categories" autocomplete="off">
@@ -120,8 +88,56 @@
     </ul>
   </aside>
   
-  <div class="collections-content">
+  <!-- Right Content Area -->
+  <div class="collections-content-wrapper">
+    <!-- Category Bubbles Section -->
+    <div class="static-collections-bubbles">
+      <ul class="static-collections-bubbles__list">
+        <li class="static-collections-bubbles__item">
+          <a href="/collections/earrings" class="static-collections-bubbles__link">
+            <span class="static-collections-bubbles__image-container">
+              <img src="{{ 'Earrings1.png' | asset_url }}" alt="Earrings" class="static-collections-bubbles__image">
+            </span>
+            <span class="static-collections-bubbles__title">EARRINGS</span>
+          </a>
+        </li>
+        <li class="static-collections-bubbles__item">
+          <a href="/collections/chains" class="static-collections-bubbles__link">
+            <span class="static-collections-bubbles__image-container">
+              <img src="{{ 'chains.png' | asset_url }}" alt="Chains" class="static-collections-bubbles__image">
+            </span>
+            <span class="static-collections-bubbles__title">CHAINS</span>
+          </a>
+        </li>
+        <li class="static-collections-bubbles__item">
+          <a href="/collections/bracelets" class="static-collections-bubbles__link">
+            <span class="static-collections-bubbles__image-container">
+              <img src="{{ 'bracelts.png' | asset_url }}" alt="Bracelets" class="static-collections-bubbles__image">
+            </span>
+            <span class="static-collections-bubbles__title">BRACELETS</span>
+          </a>
+        </li>
+        <li class="static-collections-bubbles__item">
+          <a href="/collections/rings" class="static-collections-bubbles__link">
+            <span class="static-collections-bubbles__image-container">
+              <img src="{{ 'Rings.png' | asset_url }}" alt="Rings" class="static-collections-bubbles__image">
+            </span>
+            <span class="static-collections-bubbles__title">RINGS</span>
+          </a>
+        </li>
+        <li class="static-collections-bubbles__item">
+          <a href="/collections/pendants" class="static-collections-bubbles__link">
+            <span class="static-collections-bubbles__image-container">
+              <img src="{{ 'pendant.png' | asset_url }}" alt="Pendants" class="static-collections-bubbles__image">
+            </span>
+            <span class="static-collections-bubbles__title">PENDANTS</span>
+          </a>
+        </li>
+      </ul>
+    </div>
 
+    <!-- Collections Content -->
+    <div class="collections-content">
   {%- liquid
     case section.settings.sort
       when 'products_high', 'products_low'
@@ -164,6 +180,7 @@
     </ul>
     {% render 'pagination', paginate: paginate %}
   {%- endpaginate -%}
+    </div>
   </div>
 </div>
 
