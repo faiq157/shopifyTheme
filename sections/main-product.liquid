@@ -43,6 +43,7 @@
 
   <script src="{{ 'product-info.js' | asset_url }}" defer="defer"></script>
   <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
+  <script src="{{ 'product-options.js' | asset_url }}" defer="defer"></script>
   {%- if product.quantity_price_breaks_configured? -%}
     <script src="{{ 'show-more.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'price-per-item.js' | asset_url }}" defer="defer"></script>
@@ -78,6 +79,7 @@
   {%- endif -%}
 
   {% assign variant_images = product.images | where: 'attached_to_variant?', true | map: 'src' %}
+<div>
   <div style="margin-top: 120px;" class="page-width addpadding">
     <div class="product product--{{ section.settings.media_size }} product--{{ section.settings.media_position }} product--{{ section.settings.gallery_layout }} product--mobile-{{ section.settings.mobile_thumbnails }} grid grid--1-col {% if product.media.size > 0 %}grid--2-col-tablet{% else %}product--no-media{% endif %}">
       <div class="grid__item product__media-wrapper">
@@ -122,6 +124,92 @@
                     price_class: 'price--large'
                   -%}
                 </div>
+                <link rel="stylesheet" href="{{ 'component-product-variant-picker.css' | asset_url }}"><style>.custom-radio{margin-top:0; display:flex; gap:15px; flex-wrap:wrap}.custom-radio div{display:flex; align-items:center; gap:8px;}.custom-radio label{margin-bottom:0; display:flex; align-items:center; gap:8px; cursor:pointer; position:relative;}.color-swatch{width:30px; height:30px; border-radius:50%; border:none; display:inline-block; transition:all 0.3s ease; position:relative; z-index:2;}.color-swatch::before{content:''; position:absolute; top:-6px; left:-6px; right:-6px; bottom:-6px; border-radius:50%; background:transparent; border:1px solid rgba(255,255,255,0.3); z-index:1;}.custom-radio input[type="radio"]{display:none; border:none; outline:none;}.custom-radio input[type="radio"]:checked + label .color-swatch::before{background:white; border:none;}.size-selector{margin-top:20px; display:flex; gap:10px; flex-wrap:wrap}.size-selector div{display:flex; align-items:center}.size-selector label{margin-bottom:0; display:flex; align-items:center; cursor:pointer; position:relative}.size-button{width:40px; height:40px; border-radius:8px; border:1px solid rgba(255,255,255,0.3); background:transparent; color:white; cursor:pointer; transition:all 0.3s ease; display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:500}.size-button:hover{border-color:white; transform:scale(1.05)}.size-selector input[type="radio"]{display:none; border:none; outline:none}.size-selector input[type="radio"]:checked + label .size-button{background:white; color:black; border-color:white}</style>
+        <div class="product-form__input product-form__input--pill">
+        <label class="form__label">Gold Color:</label>
+        <div class="custom-radio">
+        <div>
+            <input type="radio" id="gold1" name="properties[Gold Color:]" form="{{ 'product-form-' | append: section.id }}" value="Yellow">
+            <label for="gold1">
+                <span class="color-swatch" style="background-color: #EAC37C;"></span>
+            </label>
+        </div>
+        <div>
+            <input  type="radio" id="gold2" name="properties[Gold Color:]" form="{{ 'product-form-' | append: section.id }}" value="White">
+            <label for="gold2">
+                <span class="color-swatch" style="background-color: #FFFFFF;"></span>
+            </label>
+        </div>
+        <div>
+            <input type="radio" id="gold3" name="properties[Gold Color:]" form="{{ 'product-form-' | append: section.id }}" value="Gold Yellow">
+            <label for="gold3">
+                <span class="color-swatch" style="background-color: #FFB181;"></span>
+            </label>
+        </div>
+</div>
+</div>
+
+<!-- Size Selector -->
+<div class="product-form__input product-form__input--pill">
+<label class="form__label">SELECT SIZE:</label>
+<div class="size-selector">
+    <div>
+        <input type="radio" id="size4" name="properties[Size:]" form="{{ 'product-form-' | append: section.id }}" value="4">
+        <label for="size4">
+            <span class="size-button">4</span>
+        </label>
+    </div>
+    <div>
+        <input type="radio" id="size5" name="properties[Size:]" form="{{ 'product-form-' | append: section.id }}" value="5">
+        <label for="size5">
+            <span class="size-button">5</span>
+        </label>
+    </div>
+    <div>
+        <input type="radio" id="size6" name="properties[Size:]" form="{{ 'product-form-' | append: section.id }}" value="6">
+        <label for="size6">
+            <span class="size-button">6</span>
+        </label>
+    </div>
+    <div>
+        <input type="radio" id="size7" name="properties[Size:]" form="{{ 'product-form-' | append: section.id }}" value="7">
+        <label for="size7">
+            <span class="size-button">7</span>
+        </label>
+    </div>
+    <div>
+        <input type="radio" id="size8" name="properties[Size:]" form="{{ 'product-form-' | append: section.id }}" value="8">
+        <label for="size8">
+            <span class="size-button">8</span>
+        </label>
+    </div>
+    <div>
+        <input type="radio" id="size9" name="properties[Size:]" form="{{ 'product-form-' | append: section.id }}" value="9">
+        <label for="size9">
+            <span class="size-button">9</span>
+        </label>
+    </div>
+    <div>
+        <input type="radio" id="size10" name="properties[Size:]" form="{{ 'product-form-' | append: section.id }}" value="10">
+        <label for="size10">
+            <span class="size-button">10</span>
+        </label>
+    </div>
+    <div>
+        <input type="radio" id="size11" name="properties[Size:]" form="{{ 'product-form-' | append: section.id }}" value="11">
+        <label for="size11">
+            <span class="size-button">11</span>
+        </label>
+    </div>
+    <div>
+        <input type="radio" id="size12" name="properties[Size:]" form="{{ 'product-form-' | append: section.id }}" value="12">
+        <label for="size12">
+            <span class="size-button">12</span>
+        </label>
+    </div>
+</div>
+</div>
+
                 <hr style="border: 0; border-top: 0.8px solid #3F3F3F; margin: 2rem 0;">
                 {%- if product.quantity_price_breaks_configured? -%}
                   <div class="volume-pricing-note" id="Volume-Note-{{ section.id }}">
@@ -674,9 +762,9 @@
                     </span>
                   </div>
                 </summary>
-                <div class="accordion__content">
-                  <p>Crafted in 14K gold, this men's band features a striking mix of baguette and round diamonds, with a total carat weight of 1.55-1.75 CTW, designed to make a bold statement of sophistication.</p>
-                </div>
+               <div class="product__description rte quick-add-hidden" {{ block.shopify_attributes }}>
+                    {{ product.description }}
+                  </div>
               </details>
             </div>
 

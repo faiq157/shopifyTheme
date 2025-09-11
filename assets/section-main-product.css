@@ -20,7 +20,66 @@ product-info {
   position: relative;
    /* keep glow inside wrapper */
 }
+.custom-radio {
+  margin-top: 0;
+  display: flex;
+  gap: 2px;
+  flex-wrap: wrap;
+}
 
+.custom-radio div {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.custom-radio label {
+  margin-bottom: 0;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  cursor: pointer;
+  position: relative;
+}
+
+.color-swatch {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: none;
+  display: inline-block;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 2;
+}
+
+.color-swatch::before {
+  content: '';
+  position: absolute;
+  top: -6px;
+  left: -6px;
+  right: -6px;
+  bottom: -6px;
+  border-radius: 50%;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  z-index: 1;
+}
+
+.custom-radio input[type="radio"] {
+  display: none;
+  border: none;
+  outline: none;
+}
+
+
+
+.form__label {
+  color: white;
+  font-family: sans-serif;
+  margin-bottom: 10px;
+  display: block;
+}
 .gradient-blur {
   position: absolute;
   inset: 0; /* cover the same size as the image */
