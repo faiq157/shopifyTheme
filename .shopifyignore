@@ -23,6 +23,9 @@ README*
 *.wav
 *.flac
 
+# backup folders
+backup_videos/
+
 # big images (optional; keep only optimized assets)
 *.tif
 *.tiff
