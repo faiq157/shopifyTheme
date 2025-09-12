@@ -79,13 +79,28 @@
         if section.settings.sort == 'products_high' or section.settings.sort == 'date_reversed' or section.settings.sort == 'alphabetical_reversed'
           assign sidebar_collections = sidebar_collections | reverse
         endif
+        assign sidebar_limit = section.settings.sidebar_max_items | default: 12
+        assign total_sidebar = sidebar_collections | size
+        assign remaining_sidebar = total_sidebar | minus: sidebar_limit
+        if remaining_sidebar < 0
+          assign remaining_sidebar = 0
+        endif
       -%}
       {%- for c in sidebar_collections -%}
-        <li class="collections-sidebar__item" data-title="{{ c.title | escape | downcase }}">
+        {%- assign is_hidden = false -%}
+        {%- if forloop.index > sidebar_limit -%}
+          {%- assign is_hidden = true -%}
+        {%- endif -%}
+        <li class="collections-sidebar__item{% if is_hidden %} is-hidden{% endif %}"{% if is_hidden %} data-hidden="true" style="display:none"{% endif %} data-title="{{ c.title | escape | downcase }}">
           <a href="{{ c.url }}">{{ c.title }}</a>
         </li>
       {%- endfor -%}
     </ul>
+    {%- if remaining_sidebar > 0 -%}
+      <button id="CollectionsSidebarToggle" class="collections-sidebar__toggle" type="button" aria-expanded="false" aria-controls="CollectionsSidebarList">
+        Show more ({{ remaining_sidebar }})
+      </button>
+    {%- endif -%}
   </aside>
   
   <!-- Right Content Area -->
@@ -102,7 +117,7 @@
           </a>
         </li>
         <li class="static-collections-bubbles__item">
-          <a href="/collections/chains" class="static-collections-bubbles__link">
+          <a href="/collections/chains-1" class="static-collections-bubbles__link">
             <span class="static-collections-bubbles__image-container">
               <img src="{{ 'chains.png' | asset_url }}" alt="Chains" class="static-collections-bubbles__image">
             </span>
@@ -110,7 +125,7 @@
           </a>
         </li>
         <li class="static-collections-bubbles__item">
-          <a href="/collections/bracelets" class="static-collections-bubbles__link">
+          <a href="/collections/bracelet" class="static-collections-bubbles__link">
             <span class="static-collections-bubbles__image-container">
               <img src="{{ 'bracelts.png' | asset_url }}" alt="Bracelets" class="static-collections-bubbles__image">
             </span>
@@ -118,7 +133,7 @@
           </a>
         </li>
         <li class="static-collections-bubbles__item">
-          <a href="/collections/rings" class="static-collections-bubbles__link">
+          <a href="/collections/rings-1" class="static-collections-bubbles__link">
             <span class="static-collections-bubbles__image-container">
               <img src="{{ 'Rings.png' | asset_url }}" alt="Rings" class="static-collections-bubbles__image">
             </span>
@@ -126,9 +141,17 @@
           </a>
         </li>
         <li class="static-collections-bubbles__item">
-          <a href="/collections/pendants" class="static-collections-bubbles__link">
+          <a href="/collections/pendants-1" class="static-collections-bubbles__link">
             <span class="static-collections-bubbles__image-container">
               <img src="{{ 'pendant.png' | asset_url }}" alt="Pendants" class="static-collections-bubbles__image">
+            </span>
+            <span class="static-collections-bubbles__title">PENDANTS</span>
+          </a>
+        </li>
+            <li class="static-collections-bubbles__item">
+          <a href="/collections/all" class="static-collections-bubbles__link">
+            <span class="static-collections-bubbles__image-container">
+              <img src="{{ 'glasses.png' | asset_url }}" alt="Pendants" class="static-collections-bubbles__image">
             </span>
             <span class="static-collections-bubbles__title">PENDANTS</span>
           </a>
@@ -138,6 +161,20 @@
 
     <!-- Collections Content -->
     <div class="collections-content">
+    <div class="collections-header">
+      <h2>All Collections</h2>
+      <div class="collections-sort">
+        <label for="collections-sort-select" class="sort-label">Sort by:</label>
+        <select id="collections-sort-select" class="sort-select" onchange="sortCollections(this.value)">
+          <option value="alphabetical" {% if section.settings.sort == 'alphabetical' %}selected{% endif %}>A-Z</option>
+          <option value="alphabetical_reversed" {% if section.settings.sort == 'alphabetical_reversed' %}selected{% endif %}>Z-A</option>
+          <option value="date" {% if section.settings.sort == 'date' %}selected{% endif %}>Newest First</option>
+          <option value="date_reversed" {% if section.settings.sort == 'date_reversed' %}selected{% endif %}>Oldest First</option>
+          <option value="products_high" {% if section.settings.sort == 'products_high' %}selected{% endif %}>Most Products</option>
+          <option value="products_low" {% if section.settings.sort == 'products_low' %}selected{% endif %}>Least Products</option>
+        </select>
+      </div>
+    </div>
   {%- liquid
     case section.settings.sort
       when 'products_high', 'products_low'
@@ -187,21 +224,40 @@
 <script>
   (function() {
     var input = document.getElementById('CollectionsFilterInput');
-    if (!input) return;
-    var gridItems = document.querySelectorAll('.collection-list__item[data-title]');
-    var listItems = document.querySelectorAll('.collections-sidebar__item[data-title]');
-    function applyFilter() {
-      var q = (input.value || '').trim().toLowerCase();
-      gridItems.forEach(function(el){
-        var title = el.getAttribute('data-title') || '';
-        el.style.display = q === '' || title.indexOf(q) !== -1 ? '' : 'none';
-      });
-      listItems.forEach(function(el){
-        var title = el.getAttribute('data-title') || '';
-        el.style.display = q === '' || title.indexOf(q) !== -1 ? '' : 'none';
+    if (input) {
+      var gridItems = document.querySelectorAll('.collection-list__item[data-title]');
+      var listItems = document.querySelectorAll('.collections-sidebar__item[data-title]');
+      function applyFilter() {
+        var q = (input.value || '').trim().toLowerCase();
+        gridItems.forEach(function(el){
+          var title = el.getAttribute('data-title') || '';
+          el.style.display = q === '' || title.indexOf(q) !== -1 ? '' : 'none';
+        });
+        listItems.forEach(function(el){
+          var title = el.getAttribute('data-title') || '';
+          el.style.display = q === '' || title.indexOf(q) !== -1 ? '' : 'none';
+        });
+      }
+      input.addEventListener('input', applyFilter);
+    }
+
+    var toggleBtn = document.getElementById('CollectionsSidebarToggle');
+    if (toggleBtn) {
+      toggleBtn.addEventListener('click', function() {
+        var hiddenItems = document.querySelectorAll('#CollectionsSidebarList [data-hidden="true"]');
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        if (!expanded) {
+          hiddenItems.forEach(function(el){ el.style.display = ''; });
+          this.setAttribute('aria-expanded', 'true');
+          this.textContent = 'Show less';
+        } else {
+          hiddenItems.forEach(function(el){ el.style.display = 'none'; });
+          this.setAttribute('aria-expanded', 'false');
+          var remaining = hiddenItems.length;
+          this.textContent = 'Show more (' + remaining + ')';
+        }
       });
     }
-    input.addEventListener('input', applyFilter);
   })();
 </script>
 {% schema %}
@@ -371,6 +427,15 @@
       ],
       "default": "2",
       "label": "t:sections.main-list-collections.settings.columns_mobile.label"
+    },
+    {
+      "type": "range",
+      "id": "sidebar_max_items",
+      "min": 3,
+      "max": 50,
+      "step": 1,
+      "default": 12,
+      "label": "Max items in sidebar list"
     }
   ],
   "blocks": [
