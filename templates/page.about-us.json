@@ -1,0 +1,152 @@
+{
+  "sections": {
+    "page_hero": {
+      "type": "page-hero",
+      "settings": {
+        "subtitle": "DISCOVER OUR STORY",
+        "title": "About Johnny Dang & Co.",
+        "description": "<p>From humble beginnings to becoming the world's premier destination for luxury jewelry and custom grillz. Learn about our journey, our mission, and the passion that drives everything we do.</p>",
+        "show_cta": true,
+        "cta_text": "Explore Our Collection",
+        "cta_link": "/collections/all",
+        "show_image": true,
+        "hero_image_width": 600,
+        "hero_image_height": 400,
+        "padding_top": 60,
+        "padding_bottom": 40
+      }
+    },
+    "our_story_section": {
+      "type": "rich-text",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "background-1",
+        "full_width": true,
+        "padding_top": 60,
+        "padding_bottom": 40,
+        "content": "<h2 class=\"h1\">The Johnny Dang Legacy</h2><p>Johnny Dang, also known as the \"King of Bling,\" is a world-renowned jeweler who transformed the jewelry game with his signature custom grillz, iced-out chains, and diamond-studded masterpieces. From humble beginnings as an immigrant watch repairman, Johnny built his empire in Houston, Texas, and quickly became the go-to jeweler for the world's biggest hip-hop stars.</p><p>His designs have been worn by icons like Paul Wall, Travis Scott, Migos, Drake, Beyoncé, and countless others. Each piece tells a story of craftsmanship, luxury, and the relentless pursuit of excellence that defines the Johnny Dang & Co. brand.</p>"
+      }
+    },
+    "mission_section": {
+      "type": "rich-text",
+      "settings": {
+        "desktop_content_position": "left",
+        "content_alignment": "left",
+        "color_scheme": "background-2",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "content": "<h2>Our Mission</h2><p>At Johnny Dang & Co., we believe that jewelry is more than just an accessory – it's a statement of individuality, success, and personal style. Our mission is to create exceptional pieces that allow our clients to express their unique personality while enjoying the finest quality and craftsmanship in the industry.</p><h3>What Sets Us Apart</h3><ul><li><strong>Expert Craftsmanship:</strong> Every piece is handcrafted by skilled artisans with decades of experience</li><li><strong>Premium Materials:</strong> We use only the finest diamonds, gold, and precious metals</li><li><strong>Custom Design:</strong> From concept to creation, we bring your vision to life</li><li><strong>Celebrity Trusted:</strong> Trusted by the biggest names in music and entertainment</li><li><strong>Lifetime Warranty:</strong> We stand behind our work with comprehensive warranties</li></ul>"
+      }
+    },
+    "king_of_bling_section": {
+      "type": "king-of-bling",
+      "settings": {
+        "heading": "THE KING OF BLING",
+        "description": "<p>Johnny Dang's journey from a small watch repair shop to becoming the most sought-after jeweler in the world is a testament to hard work, creativity, and an unwavering commitment to excellence. His innovative designs and attention to detail have set new standards in the jewelry industry.</p><p>Today, Johnny Dang & Co. continues to push boundaries, creating pieces that are not just jewelry, but works of art that tell a story and make a statement.</p>",
+        "cta_text": "VIEW OUR WORK",
+        "cta_link": "/collections/all",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "values_section": {
+      "type": "rich-text",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "background-1",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 60,
+        "content": "<h2>Our Core Values</h2><div style=\"display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 2rem;\"><div><h3>Quality First</h3><p>We never compromise on quality. Every piece that leaves our workshop meets the highest standards of craftsmanship and materials.</p></div><div><h3>Innovation</h3><p>We constantly push the boundaries of design, creating unique pieces that set trends rather than follow them.</p></div><div><h3>Customer Focus</h3><p>Our customers are at the heart of everything we do. We listen, understand, and deliver beyond expectations.</p></div><div><h3>Authenticity</h3><p>We stay true to our roots while embracing new opportunities and challenges in the jewelry world.</p></div></div>"
+      }
+    },
+    "team_section": {
+      "type": "rich-text",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "background-1",
+        "full_width": true,
+        "padding_top": 60,
+        "padding_bottom": 40,
+        "content": "<h2>The Team Behind the Magic</h2><p>Our success is built on the dedication and expertise of our incredible team of artisans, designers, and customer service professionals who share Johnny's passion for excellence.</p><div style=\"display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-top: 3rem;\"><div style=\"text-align: center;\"><div style=\"width: 120px; height: 120px; border-radius: 50%; background: linear-gradient(135deg, #6a11cb, #000); margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem; font-weight: bold;\">JD</div><h3>Johnny Dang</h3><p><strong>Founder & Master Jeweler</strong></p><p>The visionary behind Johnny Dang & Co., Johnny's 20+ years of experience and innovative designs have revolutionized the jewelry industry.</p></div><div style=\"text-align: center;\"><div style=\"width: 120px; height: 120px; border-radius: 50%; background: linear-gradient(135deg, #6a11cb, #000); margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem; font-weight: bold;\">AM</div><h3>Alex Martinez</h3><p><strong>Head Designer</strong></p><p>With over 15 years in luxury jewelry design, Alex brings creativity and precision to every custom piece we create.</p></div><div style=\"text-align: center;\"><div style=\"width: 120px; height: 120px; border-radius: 50%; background: linear-gradient(135deg, #6a11cb, #000); margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem; font-weight: bold;\">SC</div><h3>Sarah Chen</h3><p><strong>Master Craftsman</strong></p><p>Sarah's meticulous attention to detail ensures every piece meets our exacting standards of quality and craftsmanship.</p></div></div>"
+      }
+    },
+    "timeline_section": {
+      "type": "rich-text",
+      "settings": {
+        "desktop_content_position": "left",
+        "content_alignment": "left",
+        "color_scheme": "background-2",
+        "full_width": true,
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "content": "<h2>Our Journey Through Time</h2><div style=\"position: relative; margin-top: 3rem;\"><div style=\"position: absolute; left: 30px; top: 0; bottom: 0; width: 2px; background: linear-gradient(to bottom, #6a11cb, #000);\"></div><div style=\"margin-left: 60px; margin-bottom: 3rem; position: relative;\"><div style=\"position: absolute; left: -45px; top: 10px; width: 20px; height: 20px; border-radius: 50%; background: #6a11cb; border: 4px solid #fff; box-shadow: 0 0 0 2px #6a11cb;\"></div><h3 style=\"color: #6a11cb; margin-bottom: 0.5rem;\">1999 - The Beginning</h3><p><strong>Johnny opens his first watch repair shop</strong> in Houston, Texas, with a dream to create something extraordinary.</p></div><div style=\"margin-left: 60px; margin-bottom: 3rem; position: relative;\"><div style=\"position: absolute; left: -45px; top: 10px; width: 20px; height: 20px; border-radius: 50%; background: #6a11cb; border: 4px solid #fff; box-shadow: 0 0 0 2px #6a11cb;\"></div><h3 style=\"color: #6a11cb; margin-bottom: 0.5rem;\">2003 - First Custom Grillz</h3><p><strong>Revolutionary custom grillz</strong> launch Johnny into the spotlight, catching the attention of hip-hop artists worldwide.</p></div><div style=\"margin-left: 60px; margin-bottom: 3rem; position: relative;\"><div style=\"position: absolute; left: -45px; top: 10px; width: 20px; height: 20px; border-radius: 50%; background: #6a11cb; border: 4px solid #fff; box-shadow: 0 0 0 2px #6a11cb;\"></div><h3 style=\"color: #6a11cb; margin-bottom: 0.5rem;\">2008 - Celebrity Recognition</h3><p><strong>Major artists like Paul Wall and Travis Scott</strong> become regular clients, solidifying Johnny's reputation as the \"King of Bling.\"</p></div><div style=\"margin-left: 60px; margin-bottom: 3rem; position: relative;\"><div style=\"position: absolute; left: -45px; top: 10px; width: 20px; height: 20px; border-radius: 50%; background: #6a11cb; border: 4px solid #fff; box-shadow: 0 0 0 2px #6a11cb;\"></div><h3 style=\"color: #6a11cb; margin-bottom: 0.5rem;\">2015 - Global Expansion</h3><p><strong>Johnny Dang & Co. opens flagship locations</strong> in major cities, bringing luxury jewelry to customers worldwide.</p></div><div style=\"margin-left: 60px; margin-bottom: 3rem; position: relative;\"><div style=\"position: absolute; left: -45px; top: 10px; width: 20px; height: 20px; border-radius: 50%; background: #6a11cb; border: 4px solid #fff; box-shadow: 0 0 0 2px #6a11cb;\"></div><h3 style=\"color: #6a11cb; margin-bottom: 0.5rem;\">2020 - Digital Innovation</h3><p><strong>Launch of online platform</strong> makes Johnny Dang & Co. accessible to customers globally, while maintaining our commitment to quality.</p></div><div style=\"margin-left: 60px; position: relative;\"><div style=\"position: absolute; left: -45px; top: 10px; width: 20px; height: 20px; border-radius: 50%; background: #6a11cb; border: 4px solid #fff; box-shadow: 0 0 0 2px #6a11cb;\"></div><h3 style=\"color: #6a11cb; margin-bottom: 0.5rem;\">2024 - The Future</h3><p><strong>Continuing to innovate</strong> with new designs, sustainable practices, and cutting-edge technology while staying true to our roots.</p></div></div>"
+      }
+    },
+    "stats_section": {
+      "type": "rich-text",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "background-1",
+        "full_width": true,
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "content": "<h2>By the Numbers</h2><p>Our achievements speak to our commitment to excellence and innovation in the jewelry industry.</p><div style=\"display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin-top: 3rem;\"><div style=\"text-align: center; padding: 2rem; background: rgba(106, 17, 203, 0.1); border-radius: 12px; border: 1px solid rgba(106, 17, 203, 0.2);\"><div style=\"font-size: 3rem; font-weight: bold; color: #6a11cb; margin-bottom: 0.5rem;\">25+</div><h3 style=\"margin: 0 0 0.5rem 0;\">Years of Excellence</h3><p style=\"margin: 0; color: #666;\">Decades of crafting luxury jewelry</p></div><div style=\"text-align: center; padding: 2rem; background: rgba(106, 17, 203, 0.1); border-radius: 12px; border: 1px solid rgba(106, 17, 203, 0.2);\"><div style=\"font-size: 3rem; font-weight: bold; color: #6a11cb; margin-bottom: 0.5rem;\">10K+</div><h3 style=\"margin: 0 0 0.5rem 0;\">Custom Pieces</h3><p style=\"margin: 0; color: #666;\">Unique creations for our clients</p></div><div style=\"text-align: center; padding: 2rem; background: rgba(106, 17, 203, 0.1); border-radius: 12px; border: 1px solid rgba(106, 17, 203, 0.2);\"><div style=\"font-size: 3rem; font-weight: bold; color: #6a11cb; margin-bottom: 0.5rem;\">500+</div><h3 style=\"margin: 0 0 0.5rem 0;\">Celebrity Clients</h3><p style=\"margin: 0; color: #666;\">Trusted by the biggest names</p></div><div style=\"text-align: center; padding: 2rem; background: rgba(106, 17, 203, 0.1); border-radius: 12px; border: 1px solid rgba(106, 17, 203, 0.2);\"><div style=\"font-size: 3rem; font-weight: bold; color: #6a11cb; margin-bottom: 0.5rem;\">50+</div><h3 style=\"margin: 0 0 0.5rem 0;\">Awards Won</h3><p style=\"margin: 0; color: #666;\">Recognition for our craftsmanship</p></div></div>"
+      }
+    },
+    "testimonials_section": {
+      "type": "rich-text",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "background-2",
+        "full_width": true,
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "content": "<h2>What Our Clients Say</h2><p>The trust and satisfaction of our clients is what drives us to continue pushing the boundaries of jewelry design.</p><div style=\"display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 3rem;\"><div style=\"background: #fff; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); text-align: left;\"><div style=\"display: flex; align-items: center; margin-bottom: 1rem;\"><div style=\"width: 50px; height: 50px; border-radius: 50%; background: linear-gradient(135deg, #6a11cb, #000); margin-right: 1rem; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;\">PW</div><div><h4 style=\"margin: 0;\">Paul Wall</h4><p style=\"margin: 0; color: #666; font-size: 0.9rem;\">Rapper & Artist</p></div></div><p style=\"font-style: italic; margin: 0;\">\"Johnny Dang's work is absolutely incredible. Every piece he creates is a masterpiece. The attention to detail and quality is unmatched in the industry.\"</p></div><div style=\"background: #fff; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); text-align: left;\"><div style=\"display: flex; align-items: center; margin-bottom: 1rem;\"><div style=\"width: 50px; height: 50px; border-radius: 50%; background: linear-gradient(135deg, #6a11cb, #000); margin-right: 1rem; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;\">TS</div><div><h4 style=\"margin: 0;\">Travis Scott</h4><p style=\"margin: 0; color: #666; font-size: 0.9rem;\">Artist & Producer</p></div></div><p style=\"font-style: italic; margin: 0;\">\"Working with Johnny Dang & Co. has been an amazing experience. They brought my vision to life and exceeded all my expectations.\"</p></div><div style=\"background: #fff; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); text-align: left;\"><div style=\"display: flex; align-items: center; margin-bottom: 1rem;\"><div style=\"width: 50px; height: 50px; border-radius: 50%; background: linear-gradient(135deg, #6a11cb, #000); margin-right: 1rem; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;\">MC</div><div><h4 style=\"margin: 0;\">Maria Chen</h4><p style=\"margin: 0; color: #666; font-size: 0.9rem;\">Luxury Client</p></div></div><p style=\"font-style: italic; margin: 0;\">\"The craftsmanship and service at Johnny Dang & Co. is exceptional. They made my dream piece a reality with incredible attention to detail.\"</p></div></div>"
+      }
+    },
+    "gallery_section": {
+      "type": "rich-text",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "background-1",
+        "full_width": true,
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "content": "<h2>Our Masterpieces</h2><p>Explore some of our most iconic creations that have graced the world's biggest stages and red carpets.</p><div style=\"display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 3rem;\"><div style=\"background: linear-gradient(135deg, #6a11cb, #000); padding: 2rem; border-radius: 12px; color: white; text-align: center;\"><h3 style=\"margin: 0 0 1rem 0;\">Custom Grillz</h3><p style=\"margin: 0; opacity: 0.9;\">Revolutionary dental jewelry that started it all</p></div><div style=\"background: linear-gradient(135deg, #6a11cb, #000); padding: 2rem; border-radius: 12px; color: white; text-align: center;\"><h3 style=\"margin: 0 0 1rem 0;\">Diamond Chains</h3><p style=\"margin: 0; opacity: 0.9;\">Iced-out masterpieces that define luxury</p></div><div style=\"background: linear-gradient(135deg, #6a11cb, #000); padding: 2rem; border-radius: 12px; color: white; text-align: center;\"><h3 style=\"margin: 0 0 1rem 0;\">Custom Rings</h3><p style=\"margin: 0; opacity: 0.9;\">Unique pieces that tell your story</p></div><div style=\"background: linear-gradient(135deg, #6a11cb, #000); padding: 2rem; border-radius: 12px; color: white; text-align: center;\"><h3 style=\"margin: 0 0 1rem 0;\">Luxury Watches</h3><p style=\"margin: 0; opacity: 0.9;\">Timepieces that make a statement</p></div><div style=\"background: linear-gradient(135deg, #6a11cb, #000); padding: 2rem; border-radius: 12px; color: white; text-align: center;\"><h3 style=\"margin: 0 0 1rem 0;\">Bracelets</h3><p style=\"margin: 0; opacity: 0.9;\">Elegant wristwear for every occasion</p></div><div style=\"background: linear-gradient(135deg, #6a11cb, #000); padding: 2rem; border-radius: 12px; color: white; text-align: center;\"><h3 style=\"margin: 0 0 1rem 0;\">Pendants</h3><p style=\"margin: 0; opacity: 0.9;\">Symbolic pieces that hold meaning</p></div></div>"
+      }
+    },
+    "contact_cta_section": {
+      "type": "rich-text",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "background-2",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "content": "<h2>Ready to Create Something Extraordinary?</h2><p>Whether you're looking for a custom piece or want to explore our exclusive collection, we're here to help you find the perfect jewelry that reflects your unique style and personality.</p><div style=\"margin-top: 2rem;\"><a href=\"/pages/contact\" class=\"button button--primary\" style=\"margin-right: 1rem;\">Get In Touch</a><a href=\"/collections/all\" class=\"button button--secondary\">Shop Collection</a></div>"
+      }
+    }
+  },
+  "order": [
+    "page_hero",
+    "our_story_section",
+    "mission_section",
+    "king_of_bling_section",
+    "values_section",
+    "team_section",
+    "timeline_section",
+    "stats_section",
+    "testimonials_section",
+    "gallery_section",
+    "contact_cta_section"
+  ]
+}

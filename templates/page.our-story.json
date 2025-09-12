@@ -1,0 +1,71 @@
+{
+  "sections": {
+    "page_hero": {
+      "type": "page-hero",
+      "settings": {
+        "subtitle": "OUR STORY",
+        "title": "Our Story",
+        "description": "<p>Founded in 1998, Johnny Dang & Co. is a jewelry business based in Houston, Texas. Dang has been credited with popularizing the diamond and gold mouthpieces known as grills, which have been worn by top recording hip hop artists and celebrities around the world.</p>",
+        "show_cta": false,
+        "show_image": false,
+        "padding_top": 60,
+        "padding_bottom": 40
+      }
+    },
+    "story_content_1": {
+      "type": "rich-text",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "background-1",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "content": "<h2>Involved in every part of the custom</h2><p>Like with any business, you have to keep giving customers something new and special to keep them coming back. Nobody buys two of the same thing. If you buy two rings, you don't want them to be identical (unless they're a matching set). The same for grills. I try a lot of different looks for jewelry, especially grills. constantly trying new things, especially highly technical ones, is what keeps my competition from successfully copying me.</p>"
+      }
+    },
+    "story_content_2": {
+      "type": "rich-text",
+      "settings": {
+        "desktop_content_position": "left",
+        "content_alignment": "left",
+        "color_scheme": "background-2",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "content": "<h2>In an interview with Forbes, Dang states:</h2><p>Dang has carried the tradition of keeping all custom jewelry work in-house with multiple manufacturing facilities, employing over 72 employees with 3 retail locations. Early on, Dang tried to make things unique for each of his rapper rapper clients, using things like round diamonds, different colored diamonds, and various embellishments that would make them look one-of-a-kind.</p>"
+      }
+    },
+    "story_content_3": {
+      "type": "rich-text",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "background-1",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "content": "<h2>The Jeweler You Can trust</h2><p>We understand the difficulties that come with purchasing custom-made jewelry and finding a store you can trust. On top of this, finding someone who understands your artistic vision can be especially difficult. At Johnny Dang & Co., our team is fully equipped with the knowledge and passion to bring your vision to life with remarkable accuracy.</p>"
+      }
+    },
+    "story_content_4": {
+      "type": "rich-text",
+      "settings": {
+        "desktop_content_position": "left",
+        "content_alignment": "left",
+        "color_scheme": "background-2",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "content": "<h2>VIP Grills wall</h2><p>If you join us in the back room and lab, you are greeted by this wall mounted storage rack setup beautifully adorned with photos and names of all of the different VIPs from whom Dang has taken tooth molds for grills. After the initial mold, future grills can be created using just the mold on file in this rack.</p>"
+      }
+    }
+  },
+  "order": [
+    "page_hero",
+    "story_content_1",
+    "story_content_2",
+    "story_content_3",
+    "story_content_4"
+  ]
+}
