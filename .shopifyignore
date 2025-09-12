@@ -27,3 +27,33 @@ README*
 *.tif
 *.tiff
 *.bmp
+
+# build/source folders
+node_modules/*
+dist/*
+build/*
+tmp/*
+.vscode/*
+.git/*
+.gitignore
+README*
+*.map
+
+# design and archives
+*.psd
+*.ai
+*.sketch
+*.zip
+*.rar
+
+# media too large for theme
+*.mp4
+*.mov
+*.avi
+*.wav
+*.flac
+
+# big images (optional; keep only optimized assets)
+*.tif
+*.tiff
+*.bmp

@@ -23,12 +23,17 @@ product-info {
 .custom-radio {
   margin-top: 0;
   display: flex;
-  gap: 2px;
+  padding: 8px;
+  /* background-color: red; */
+  gap: 16px;
   flex-wrap: wrap;
 }
 
 .custom-radio div {
   display: flex;
+  align-items: center;
+  /* background-color: green; */
+  padding: 4px;
   align-items: center;
   gap: 2px;
 }
@@ -36,19 +41,20 @@ product-info {
 .custom-radio label {
   margin-bottom: 0;
   display: flex;
+  /* background-color: red; */
   align-items: center;
-  gap: 2px;
+  gap: 6px;
   cursor: pointer;
   position: relative;
 }
 
 .color-swatch {
-  width: 30px;
-  height: 30px;
+  width: 26.4px;
+  height: 26.4px;
   border-radius: 50%;
   border: none;
   display: inline-block;
-  transition: all 0.3s ease;
+  transition: all 0.3s ease-in-out;
   position: relative;
   z-index: 2;
 }
@@ -72,6 +78,65 @@ product-info {
   outline: none;
 }
 
+.custom-radio input[type="radio"]:checked + label .color-swatch::before {
+  /* background: white; */
+  border: none;
+}
+
+/* Size Selector Styles */
+.size-selector {
+  margin-top: 20px;
+  display: flex;
+  gap: 2px;
+  flex-wrap: wrap;
+}
+
+.size-selector div {
+  display: flex;
+  align-items: center;
+}
+
+.size-selector label {
+  margin-bottom: 0;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+}
+
+.size-button {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: transparent;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.size-button:hover {
+  border-color: white;
+  transform: scale(1.05);
+}
+
+.size-selector input[type="radio"] {
+  display: none;
+  border: none;
+  outline: none;
+}
+
+.size-selector input[type="radio"]:checked + label .size-button {
+  /* background: white; */
+  color: white;
+  border: none;
+  /* border-color: white; */
+}
 
 
 .form__label {
